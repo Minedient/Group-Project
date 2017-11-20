@@ -1,0 +1,4 @@
+##Change Log##
+18/11/2017: Uploaded gp.cpp
+            Finished 80% the basic interface (R0)
+            Full exit function (R5)
