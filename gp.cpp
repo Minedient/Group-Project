@@ -13,6 +13,7 @@ int main()
 	int choice;
 
 	start:
+	//The main loop of the game, only break out when user want to exit
 	while(1){
 		cout << endl;
 		cout << "Welcome Message designed by your group\n" << endl;
@@ -43,6 +44,7 @@ int main()
 	};
 }
 
+//This is the function for calling exit (R5)---Can be also used to exit game/credit e.t.c
 bool exit(){
 	char isexit;
 	cout << "You really want to exit : |???" << endl;
