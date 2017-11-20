@@ -44,7 +44,7 @@ int main()
 	};
 }
 
-//Macro exit function for returning to upper level of the program, terminate the program when execute in main menu
+//Macro exit function (with y/n) for returning to upper level of the program, terminate the program when execute in main menu
 bool exit(String msg){
 	char isexit;
 	cout << msg << endl;
