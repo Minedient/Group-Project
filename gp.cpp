@@ -44,7 +44,7 @@ int main()
 	};
 }
 
-//This is the function for calling exit (R5)---Can be also used to RETURN the main menu
+//Macro exit function for returning to upper level of the program, terminate the program when execute in main menu
 bool exit(String msg){
 	char isexit;
 	cout << msg << endl;
