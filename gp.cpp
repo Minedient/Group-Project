@@ -4,7 +4,7 @@
 #include <stdlib.h>;
 using namespace std;
 
-bool exit();
+bool exit(String);
 
 void credit();
 
@@ -31,7 +31,7 @@ int main()
 		case 2: /*P2 here*/ ; break;
 		case 3: /*P3 here*/ ; break;
 		case 4: credit() ; break;
-		case 5: if(exit() == true)
+		case 5: if(exit("You really want to exit : |???") == true)
 					return 0;
 				else continue;
 		default:
@@ -45,9 +45,9 @@ int main()
 }
 
 //This is the function for calling exit (R5)---Can be also used to RETURN the main menu
-bool exit(){
+bool exit(String msg){
 	char isexit;
-	cout << "You really want to exit : |???" << endl;
+	cout << msg << endl;
 	cin >> isexit;
 	if(isexit == 'y'|| isexit == 'Y')
 		return true;
