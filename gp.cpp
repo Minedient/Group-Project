@@ -44,7 +44,7 @@ int main()
 	};
 }
 
-//This is the function for calling exit (R5)---Can be also used to exit game/credit e.t.c
+//This is the function for calling exit (R5)---Can be also used to RETURN the main menu
 bool exit(){
 	char isexit;
 	cout << "You really want to exit : |???" << endl;
