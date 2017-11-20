@@ -2,7 +2,8 @@
 18/11/2017: 
             Uploaded gp.cpp
             Finished 80% the basic interface (R0)
-            Full exit function (R5)
+            exit function 60% (R5)
 21/11/2017: 
      1:41   exit() --> exit(String)
             use to terminate the program/ return to menu e.t.c
+     2:00   retouch the exit function(R5)
