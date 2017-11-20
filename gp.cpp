@@ -1,18 +1,18 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-#include <stdlib.h>;
+#include <stdlib.h>
 using namespace std;
 
-bool exit(String);
+bool exit(char[]);
 
 void credit();
 
 int main()
 {
 	int choice;
+	char mainmenuExit[40] = "You really want to exit : |???";
 
-	start:
 	//The main loop of the game, only break out when user want to exit
 	while(1){
 		cout << endl;
@@ -31,7 +31,7 @@ int main()
 		case 2: /*P2 here*/ ; break;
 		case 3: /*P3 here*/ ; break;
 		case 4: credit() ; break;
-		case 5: if(exit("You really want to exit : |???") == true)
+		case 5: if(exit(mainmenuExit) == true)
 					return 0;
 				else continue;
 		default:
@@ -45,15 +45,21 @@ int main()
 }
 
 //Macro exit function (with y/n) for returning to upper level of the program, terminate the program when execute in main menu
-bool exit(String msg){
+bool exit(char msg[]){
 	char isexit;
-	cout << msg << endl;
-	cin >> isexit;
-	if(isexit == 'y'|| isexit == 'Y')
-		return true;
-	else{
-		system("cls");
-		return false;
+	while(1){
+		cout << msg << endl;
+		cout << "(y/n)" << endl;
+		cin >> isexit;
+		if(isexit == 'y'|| isexit == 'Y')
+			return true;
+		else if(isexit == 'n'|| isexit == 'N'){
+			system("cls");
+			return false;
+		}else{
+			system("cls");
+			cout << "Only y/n is accepted" << endl;
+		}
 	}
 
 }
