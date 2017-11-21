@@ -20,6 +20,18 @@ pc demo: auto with pause or manual?
 
 class chessboard
 
+-char array
+
+-check:
+
+-> timer bomb and 5 turns have passed? call timer bomb function
+
+-> pc demo? skip input request
+
+-> attempt placing block on any space on the board
+
+--> fails? game over
+
 -placeblock function
  
 -> refers to block objects for coordinates
@@ -29,6 +41,8 @@ class chessboard
 -checkclear function
 
 -> checks for rows and columns separately
+
+-> if any space is not occupied, break and go to next row/column
 
 -> register if a row/column should be cleared in seperate array
 
@@ -41,3 +55,14 @@ class block
 -> with different index numbers
   
 -display function
+
+
+timer bomb function
+
+-numbers displayed as char
+
+-if no bomb is present, create one on random space
+
+-> if yes, timer go down
+
+-> if timer reaches 0, skip to game over
