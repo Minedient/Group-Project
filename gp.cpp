@@ -6,6 +6,7 @@ using namespace std;
 
 bool tBombOn = 0, pcDemoOn = 0;
 char blockChar = 'X';
+int boardSize = 10;
 
 class Block
 {
@@ -40,6 +41,8 @@ private:
 	char blockS[5][5];
 	int placeScore, blockIndex;
 }
+
+void blockBoard();
 
 bool exit(char[]);
 
@@ -79,6 +82,18 @@ int main()
 		//Clear Screen
 		system("cls");
 	};
+}
+	
+void blockBoard(){
+	char boardSpace[boardSize][boardSize];
+	
+	//store empty space into board
+	for (int i = 0, i < boardSize, i++){
+		for (int j = 0, j < boardSize, j++){
+			boardSpace[i][j] = ' ';
+		}
+	}
+	
 }
 
 //Macro exit function (with y/n) for returning to upper level of the program, terminate the program when execute in main menu
