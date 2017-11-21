@@ -8,3 +8,4 @@
             use to terminate the program/ return to menu e.t.c
      2:00   retouch the exit function(R5)
      15:25  added class Block and function for creating blocks (R1.2)
+     15:48  added preliminary function blockBoard
