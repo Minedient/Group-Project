@@ -11,3 +11,4 @@
      15:48  added preliminary function blockBoard
 23/11/2017:
      21:08  fixed char array blockS not being initially defined
+     21:24  added blockCharC() function for changing blockChar
