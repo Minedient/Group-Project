@@ -13,3 +13,5 @@
      21:08  fixed char array blockS not being initially defined
      21:24  added blockCharC() function for changing blockChar
      21:44  added startGame() function for starting the game
+24/11/2017:
+     00:47  rewritten the old Block Class
