@@ -151,7 +151,53 @@ void blockCharC(char x){
 	blockChar = x;
 }
 
-//Start the Game
+//Start the Game <-- Will be modified later 
 void startGame(){
+	
+	system("cls");
+	int gboardSize = boardSize+3;
 
+	//The chessboard with A-J and 0-9
+	char greaterboard[gboardSize][gboardSize];
+
+	//Fill the board with ' ' first
+	for(int i=0;i<gboardSize;i++){
+		for(int j=0;j<gboardSize;j++){
+			greaterboard[i][j] = ' ';
+		}
+	}
+
+	//generate size sensitive top
+	for(int i=2;i<gboardSize-1;i++){
+		greaterboard[0][i] = 48+i-2;
+	}
+
+	//generate size sensitive side
+	for(int i=2;i<gboardSize-1;i++){
+		greaterboard[i][0] = 65+i-2;
+	}
+
+	//Generate the outline of the board
+	for(int i=0;i<gboardSize;i++){
+		for(int j=0;j<gboardSize;j++){
+			if((i==1||i==gboardSize-1) && j>=1)
+				greaterboard[i][j] = '@';
+			if(i!=0){
+				if(j==1 || j== gboardSize-1)
+					greaterboard[i][j] = '@';
+			}
+		}
+
+	}
+
+	//Show the board
+	for(int i=0;i<gboardSize;i++){
+		for(int j=0;j<gboardSize;j++){
+			cout << greaterboard[i][j];
+		}
+		cout << endl;
+	}
+
+
+	system("pause");
 }
