@@ -14,44 +14,59 @@ public:
 	//create block for player to pick with blockTemplate(block type, index number)
 	void blockTemplate(int x, int y)
 	{
-		blockIndex = y
+		blockIndex = y;
 		switch(x){
 			//block types
-			case 1: blockS = {blockChar}; placeScore = 10; break;
-			case 2: blockS = {blockChar, blockChar}; placeScore = 20; break;
-			case 3: blockS = {blockChar, blockChar, blockChar}; placeScore = 30; break;
-			case 4: blockS = {blockChar, blockChar, blockChar, blockChar}; placeScore = 40; break;
-			case 5: blockS = {blockChar, blockChar, blockChar, blockChar, blockChar}; placeScore = 0; break;
-			case 6: blockS = {{blockChar}, {blockChar}}; placeScore = 20; break;
-			case 7: blockS = {{blockChar}, {blockChar}, {blockChar}}; placeScore = 30; break;
-			case 8: blockS = {{blockChar}, {blockChar}, {blockChar}, {blockChar}}; placeScore = 40; break;
-			case 9: blockS = {{blockChar}, {blockChar}, {blockChar}, {blockChar}, {blockChar}}; placeScore = 0; break;
-			case 10: blockS = {{blockChar}, {blockChar, blockChar}}; placeScore = 30; break;
-			case 11: blockS = {{' ', blockChar}, {blockChar, blockChar}}; placeScore = 30; break;
-			case 12: blockS = {{blockChar, blockChar}, {blockChar}}; placeScore = 30; break;
-			case 13: blockS = {{blockChar, blockChar}, {' ', blockChar}}; placeScore = 30; break;
-			case 14: blockS = {{blockChar}, {blockChar}, {blockChar, blockChar, blockChar}}; placeScore = 50; break;
-			case 15: blockS = {{' ', ' ', blockChar}, {' ', ' ', blockChar}, {blockChar, blockChar, blockChar}}; placeScore = 50; break;
-			case 16: blockS = {{blockChar, blockChar, blockChar}, {blockChar}, {blockChar}}; placeScore = 50; break;
-			case 17: blockS = {{blockChar, blockChar, blockChar}, {' ', ' ', blockChar}, {' ', ' ', blockChar}}; placeScore = 50; break;
-			case 18: blockS = {{blockChar, blockChar}, {blockChar, blockChar}}; placeScore = 40; break;
-			case 19: blockS = {{blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}}; placeScore = 90; break;
+			case 1: blockS = {blockChar}; placeScore = 10; 
+				break;
+			case 2: blockS = {blockChar, blockChar}; placeScore = 20; 
+				break;
+			case 3: blockS = {blockChar, blockChar, blockChar}; placeScore = 30; 
+				break;
+			case 4: blockS = {blockChar, blockChar, blockChar, blockChar}; placeScore = 40; 
+				break;
+			case 5: blockS = {blockChar, blockChar, blockChar, blockChar, blockChar}; placeScore = 0; 
+				break;
+			case 6: blockS = {{blockChar}, {blockChar}}; placeScore = 20; 
+				break;
+			case 7: blockS = {{blockChar}, {blockChar}, {blockChar}}; placeScore = 30; 
+				break;
+			case 8: blockS = {{blockChar}, {blockChar}, {blockChar}, {blockChar}}; placeScore = 40; 
+				break;
+			case 9: blockS = {{blockChar}, {blockChar}, {blockChar}, {blockChar}, {blockChar}}; placeScore = 0; 
+				break;
+			case 10: blockS = {{blockChar}, {blockChar, blockChar}}; placeScore = 30;
+				break;
+			case 11: blockS = {{' ', blockChar}, {blockChar, blockChar}}; placeScore = 30;
+				break;
+			case 12: blockS = {{blockChar, blockChar}, {blockChar}}; placeScore = 30;
+				break;
+			case 13: blockS = {{blockChar, blockChar}, {' ', blockChar}}; placeScore = 30;
+				break;
+			case 14: blockS = {{blockChar}, {blockChar}, {blockChar, blockChar, blockChar}}; placeScore = 50;
+				break;
+			case 15: blockS = {{' ', ' ', blockChar}, {' ', ' ', blockChar}, {blockChar, blockChar, blockChar}}; placeScore = 50; 
+				break;
+			case 16: blockS = {{blockChar, blockChar, blockChar}, {blockChar}, {blockChar}}; placeScore = 50;
+				break;
+			case 17: blockS = {{blockChar, blockChar, blockChar}, {' ', ' ', blockChar}, {' ', ' ', blockChar}}; placeScore = 50;
+				break;
+			case 18: blockS = {{blockChar, blockChar}, {blockChar, blockChar}}; placeScore = 40;
+				break;
+			case 19: blockS = {{blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}}; placeScore = 90; 
+				            break;
+	}
 	}
 private:
 	char blockS[5][5] = {{' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' '}};
 	int placeScore, blockIndex;
 }
 
-/*
-Function Declare zone
-*/
 void blockBoard();
 
 bool exit(char[]);
 
 void credit();
-	
-void blockCharC(char);
 
 int main()
 {
@@ -90,7 +105,7 @@ int main()
 }
 	
 void blockBoard(){
-	char boardSpace[boardSize][boardSize];
+	char boardSpace[10][10];
 	
 	//store empty space into board
 	for (int i = 0; i < boardSize; i++){
@@ -123,8 +138,4 @@ bool exit(char msg[]){
 
 void credit(){
 
-}
-	
-void blockCharC(char x){
-	blockChar = x;
 }
