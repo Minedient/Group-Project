@@ -19,7 +19,7 @@ void startGame();
 class Block
 {
 public:
-	//create block for player to pick with blockTemplate(block type, block type)
+	//Construtor to create block for player to pick(block type, index) 
 	Block(char block[5][5],int x){
 		for(int i=0;i<5;i++)
 			for(int j=0;j<5;j++)
