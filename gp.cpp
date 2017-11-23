@@ -121,10 +121,13 @@ void blockBoard(){
 //Macro exit function (with y/n) for returning to upper level of the program, terminate the program when execute in main menu
 bool exit(char msg[]){
 	char isexit;
+	
 	while(1){
+		//Ask User for input
 		cout << msg << endl;
 		cout << "(y/n)" << endl;
 		cin >> isexit;
+		//Check the input
 		if(isexit == 'y'|| isexit == 'Y')
 			return true;
 		else if(isexit == 'n'|| isexit == 'N'){
@@ -138,10 +141,12 @@ bool exit(char msg[]){
 
 }
 
+//Show the credit page
 void credit(){
 
 }
 
+//Change the char of the blocks
 void blockCharC(char x){
 	blockChar = x;
 }
