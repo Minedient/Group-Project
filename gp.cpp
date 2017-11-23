@@ -42,11 +42,16 @@ private:
 	int placeScore, blockIndex;
 }
 
+/*
+Function Declare zone
+*/
 void blockBoard();
 
 bool exit(char[]);
 
 void credit();
+	
+void blockCharC(char);
 
 int main()
 {
@@ -118,4 +123,8 @@ bool exit(char msg[]){
 
 void credit(){
 
+}
+	
+void blockCharC(char x){
+	blockChar = x;
 }
