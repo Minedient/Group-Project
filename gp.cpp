@@ -68,6 +68,8 @@ bool exit(char[]);
 
 void credit();
 
+void blockCharC(char);
+
 int main()
 {
 	int choice;
@@ -138,4 +140,8 @@ bool exit(char msg[]){
 
 void credit(){
 
+}
+
+void blockCharC(char x){
+	blockChar = x;
 }
