@@ -6,7 +6,7 @@ using namespace std;
 
 bool tBombOn = 0, pcDemoOn = 0;
 char blockChar = 'X';
-int boardSize = 10;
+int boardSize = 10, tBombCount = 9;
 
 //Declare function
 void blockBoard();
@@ -14,6 +14,7 @@ bool exit(char[]);
 void credit();
 void blockCharC(char);
 void startGame();
+void settingsMenu();
 
 
 class Block
@@ -47,7 +48,7 @@ private:
 
 int main()
 {
-	char choice;
+	int choice;
 	char mainmenuExit[40] = "Do you really wish to exit?";
 	/*
 	 * Plz copy zero's work to here
@@ -89,24 +90,23 @@ int main()
 		cin >> choice;
 
 		switch (choice){
-		case '1': /*P1 here*/ ; break;
-		case '2': /*P2 here*/ ; break;
-		case '3': /*P3 here*/ ; break;
-		case '4': credit() ; break;
-		case '5': if(exit(mainmenuExit) == true)
+		case 1: /*P1 here*/ ; break;
+		case 2: settingsMenu(); break;
+		case 3: /*P3 here*/ ; break;
+		case 4: credit() ; break;
+		case 5: if(exit(mainmenuExit) == true)
 					return 0;
 				else continue;
 		default:
 			cout << "Please enter choice 1 - 5 only." << endl;
-			system("pause");
 			break;
+
 		}
 		//Clear Screen
 		system("cls");
 	};
 }
 
-//The real chessboard
 void blockBoard(){
 	char boardSpace[10][10];
 
@@ -144,9 +144,6 @@ bool exit(char msg[]){
 
 //Show the credit page
 void credit(){
-	cout << "MAK HOI KIT   16027276A 103C" << endl;
-	cout << "SARKI JOSHAN  16......A 103B" << endl;
-	
 
 }
 
@@ -155,53 +152,43 @@ void blockCharC(char x){
 	blockChar = x;
 }
 
-//Start the Game <-- Will be modified later <--Cosmetics chessboard
+//Start the Game
 void startGame(){
+
+}
+
+//Load Settings configuration
+void settingsMenu(){
+	bool setExit = 0;
+	int choice;
+	char settingsMenuExit[40] = "Do you wish to return to main menu?";
 	
-	system("cls");
-	int gboardSize = boardSize+3;
+	while(setExit == 0){
+		cout << "\n*** Settings Menu ***" << endl;
+		cout << "[1] PC Game Demo" << endl;
+		cout << "[2] Timer Bomb Mode" << endl;
+		cout << "[3] Change Board Size" << endl;
+		cout << "[4] Change Bomb Timer" << endl;
+		cout << "[5] Change Block Character" << endl;
+		cout << "[6] Return to Game Menu" << endl;
+		cout << "*****************" << endl;
+		cout << "Option (1-6): ";
+		cin >> choice;
 
-	//The chessboard with A-J and 0-9
-	char greaterboard[gboardSize][gboardSize];
+		switch (choice){
+		case 1: /*PC Demo toggle*/ ; continue;
+		case 2: /*Timer Bomb toggle*/ ; continue;
+		case 3: /*Board Size option*/ ; continue;
+		case 4: /*Bomb Timer option*/ ; continue;
+		case 5: /*Block Character option*/ ; continue;
+		case 6: if(exit(settingsMenuExit) == true) setExit = 1;
+			continue;
+		default:
+			cout << "Please enter choice 1 - 6 only." << endl;
+			break;
 
-	//Fill the board with ' ' first
-	for(int i=0;i<gboardSize;i++){
-		for(int j=0;j<gboardSize;j++){
-			greaterboard[i][j] = ' ';
 		}
-	}
-
-	//generate size sensitive top
-	for(int i=2;i<gboardSize-1;i++){
-		greaterboard[0][i] = 48+i-2;
-	}
-
-	//generate size sensitive side
-	for(int i=2;i<gboardSize-1;i++){
-		greaterboard[i][0] = 65+i-2;
-	}
-
-	//Generate the outline of the board
-	for(int i=0;i<gboardSize;i++){
-		for(int j=0;j<gboardSize;j++){
-			if((i==1||i==gboardSize-1) && j>=1)
-				greaterboard[i][j] = '@';
-			if(i!=0){
-				if(j==1 || j== gboardSize-1)
-					greaterboard[i][j] = '@';
-			}
-		}
-
-	}
-
-	//Show the board
-	for(int i=0;i<gboardSize;i++){
-		for(int j=0;j<gboardSize;j++){
-			cout << greaterboard[i][j];
-		}
-		cout << endl;
-	}
-
-
-	system("pause");
+		//Clear Screen
+		system("cls");
+	};
 }
