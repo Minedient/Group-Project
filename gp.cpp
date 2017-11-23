@@ -88,8 +88,8 @@ void blockBoard(){
 	char boardSpace[boardSize][boardSize];
 	
 	//store empty space into board
-	for (int i = 0, i < boardSize, i++){
-		for (int j = 0, j < boardSize, j++){
+	for (int i = 0; i < boardSize; i++){
+		for (int j = 0; j < boardSize; j++){
 			boardSpace[i][j] = ' ';
 		}
 	}
