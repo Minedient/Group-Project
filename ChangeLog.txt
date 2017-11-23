@@ -9,3 +9,5 @@
      2:00   retouch the exit function(R5)
      15:25  added class Block and function for creating blocks (R1.2)
      15:48  added preliminary function blockBoard
+23/11/2017:
+     21:08  fixed char array blockS not being initially defined
