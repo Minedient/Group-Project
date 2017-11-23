@@ -15,3 +15,5 @@
      21:44  added startGame() function for starting the game
 24/11/2017:
      00:47  rewritten the old Block Class
+     02:01  created the greaterchessboard(Chessboard shown to player)
+     02:01  DEBUG: remove the bug when you type !(1-5) in main menu, the screen will glitch
