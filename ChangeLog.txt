@@ -17,3 +17,4 @@
      00:47  rewritten the old Block Class
      02:01  created the greaterchessboard(Chessboard shown to player)
      02:01  DEBUG: remove the bug when you type !(1-5) in main menu, the screen will glitch
+     02:36  Everything broken and then got better. Somehow. In other words, created settingsMenu()
