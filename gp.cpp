@@ -48,7 +48,7 @@ private:
 int main()
 {
 	int choice;
-	char mainmenuExit[40] = "You really want to exit : ???";
+	char mainmenuExit[40] = "Do you really wish to exit?";
 	/*
 	 * Plz copy zero's work to here
 	 * Please name h for horizontal block
@@ -77,7 +77,7 @@ int main()
 	//The main loop of the game, only break out when user want to exit
 	while(1){
 		cout << endl;
-		cout << "Welcome Message designed by your group\n" << endl;
+		cout << "Blockblazer - Clear The Blocks!\n" << endl;
 		cout << "*** Game Menu ***" << endl;
 		cout << "[1] Start Game" << endl;
 		cout << "[2] Settings" << endl;
