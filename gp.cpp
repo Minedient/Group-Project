@@ -19,12 +19,13 @@ void startGame();
 class Block
 {
 public:
-	//Construtor to create block for player to pick(block type, index) 
-	Block(char block[5][5],int x){
+	//Construtor to create block for player to pick(block type, index, blockCount) 
+	Block(char block[5][5],int x,int b){
 		for(int i=0;i<5;i++)
 			for(int j=0;j<5;j++)
 				blockS[i][j] = block[i][j];
 		blockIndex = x;
+		placeScore = b*10;
 	}
 
 	void print(){
@@ -56,22 +57,22 @@ int main()
 	char h1[5][5] = {blockChar};
 	char h2[5][5] = {blockChar,blockChar};
 	char h3[5][5] = {blockChar,blockChar,blockChar};
-	char h4
-	char h5
-	char v2
-	char v3
-	char v4
-	char v5
-	char L11
-	char L12
-	char L13
-	char L14
-	char L21
-	char L22
-	char L23
-	char L24
-	char s1
-	char s2
+	char h4[5][5] = {blockChar, blockChar, blockChar, blockChar};
+	char h5[5][5] = {blockChar, blockChar, blockChar, blockChar, blockChar};
+	char v2[5][5] = {{blockChar}, {blockChar}};
+	char v3[5][5] = {{blockChar}, {blockChar}, {blockChar}};
+	char v4[5][5] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}};
+	char v5[5][5] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}, {blockChar}};
+	char L11[5][5] = {{blockChar}, {blockChar, blockChar}};
+	char L12[5][5] = {{' ', blockChar}, {blockChar, blockChar}};
+	char L13[5][5] = {{blockChar, blockChar}, {blockChar}};
+	char L14[5][5] = {{blockChar, blockChar}, {' ', blockChar}};
+	char L21[5][5] = {{blockChar}, {blockChar}, {blockChar, blockChar, blockChar}};
+	char L22[5][5] = {{' ', ' ', blockChar}, {' ', ' ', blockChar}, {blockChar, blockChar, blockChar}};
+	char L23[5][5] = {{blockChar, blockChar, blockChar}, {blockChar}, {blockChar}};
+	char L24[5][5] = {{blockChar, blockChar, blockChar}, {' ', ' ', blockChar}, {' ', ' ', blockChar}};
+	char s1[5][5] = {{blockChar, blockChar}, {blockChar, blockChar}};
+	char s2[5][5] = {{blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}};
 
 	//The main loop of the game, only break out when user want to exit
 	while(1){
