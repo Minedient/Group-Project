@@ -47,7 +47,7 @@ private:
 
 int main()
 {
-	int choice;
+	char choice;
 	char mainmenuExit[40] = "Do you really wish to exit?";
 	/*
 	 * Plz copy zero's work to here
@@ -89,17 +89,17 @@ int main()
 		cin >> choice;
 
 		switch (choice){
-		case 1: /*P1 here*/ ; break;
-		case 2: /*P2 here*/ ; break;
-		case 3: /*P3 here*/ ; break;
-		case 4: credit() ; break;
-		case 5: if(exit(mainmenuExit) == true)
+		case '1': /*P1 here*/ ; break;
+		case '2': /*P2 here*/ ; break;
+		case '3': /*P3 here*/ ; break;
+		case '4': credit() ; break;
+		case '5': if(exit(mainmenuExit) == true)
 					return 0;
 				else continue;
 		default:
 			cout << "Please enter choice 1 - 5 only." << endl;
+			system("pause");
 			break;
-
 		}
 		//Clear Screen
 		system("cls");
