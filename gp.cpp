@@ -106,6 +106,7 @@ int main()
 	};
 }
 
+//The real chessboard
 void blockBoard(){
 	char boardSpace[10][10];
 
@@ -151,7 +152,7 @@ void blockCharC(char x){
 	blockChar = x;
 }
 
-//Start the Game <-- Will be modified later 
+//Start the Game <-- Will be modified later <--Cosmetics chessboard
 void startGame(){
 	
 	system("cls");
