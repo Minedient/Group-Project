@@ -7,10 +7,13 @@ using namespace std;
 bool tBombOn = 0, pcDemoOn = 0;
 char blockChar = 'X';
 int boardSize = 10;
+
+//Declare function
 void blockBoard();
 bool exit(char[]);
 void credit();
 void blockCharC(char);
+void startGame();
 
 
 class Block
@@ -22,23 +25,23 @@ public:
 		blockIndex = y;
 		switch(x){
 			//block types
-			case 1: blockS = {blockChar}; placeScore = 10; 
+			case 1: blockS = {blockChar}; placeScore = 10;
 				break;
-			case 2: blockS = {blockChar, blockChar}; placeScore = 20; 
+			case 2: blockS = {blockChar, blockChar}; placeScore = 20;
 				break;
-			case 3: blockS = {blockChar, blockChar, blockChar}; placeScore = 30; 
+			case 3: blockS = {blockChar, blockChar, blockChar}; placeScore = 30;
 				break;
-			case 4: blockS = {blockChar, blockChar, blockChar, blockChar}; placeScore = 40; 
+			case 4: blockS = {blockChar, blockChar, blockChar, blockChar}; placeScore = 40;
 				break;
-			case 5: blockS = {blockChar, blockChar, blockChar, blockChar, blockChar}; placeScore = 0; 
+			case 5: blockS = {blockChar, blockChar, blockChar, blockChar, blockChar}; placeScore = 0;
 				break;
-			case 6: blockS = {{blockChar}, {blockChar}}; placeScore = 20; 
+			case 6: blockS = {{blockChar}, {blockChar}}; placeScore = 20;
 				break;
-			case 7: blockS = {{blockChar}, {blockChar}, {blockChar}}; placeScore = 30; 
+			case 7: blockS = {{blockChar}, {blockChar}, {blockChar}}; placeScore = 30;
 				break;
-			case 8: blockS = {{blockChar}, {blockChar}, {blockChar}, {blockChar}}; placeScore = 40; 
+			case 8: blockS = {{blockChar}, {blockChar}, {blockChar}, {blockChar}}; placeScore = 40;
 				break;
-			case 9: blockS = {{blockChar}, {blockChar}, {blockChar}, {blockChar}, {blockChar}}; placeScore = 0; 
+			case 9: blockS = {{blockChar}, {blockChar}, {blockChar}, {blockChar}, {blockChar}}; placeScore = 0;
 				break;
 			case 10: blockS = {{blockChar}, {blockChar, blockChar}}; placeScore = 30;
 				break;
@@ -50,7 +53,7 @@ public:
 				break;
 			case 14: blockS = {{blockChar}, {blockChar}, {blockChar, blockChar, blockChar}}; placeScore = 50;
 				break;
-			case 15: blockS = {{' ', ' ', blockChar}, {' ', ' ', blockChar}, {blockChar, blockChar, blockChar}}; placeScore = 50; 
+			case 15: blockS = {{' ', ' ', blockChar}, {' ', ' ', blockChar}, {blockChar, blockChar, blockChar}}; placeScore = 50;
 				break;
 			case 16: blockS = {{blockChar, blockChar, blockChar}, {blockChar}, {blockChar}}; placeScore = 50;
 				break;
@@ -58,14 +61,14 @@ public:
 				break;
 			case 18: blockS = {{blockChar, blockChar}, {blockChar, blockChar}}; placeScore = 40;
 				break;
-			case 19: blockS = {{blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}}; placeScore = 90; 
+			case 19: blockS = {{blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}}; placeScore = 90;
 				            break;
 	}
 	}
 private:
 	char blockS[5][5] = {{' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' '}};
 	int placeScore, blockIndex;
-}
+};
 
 
 int main()
@@ -103,23 +106,23 @@ int main()
 		system("cls");
 	};
 }
-	
+
 void blockBoard(){
 	char boardSpace[10][10];
-	
+
 	//store empty space into board
 	for (int i = 0; i < boardSize; i++){
 		for (int j = 0; j < boardSize; j++){
 			boardSpace[i][j] = ' ';
 		}
 	}
-	
+
 }
 
 //Macro exit function (with y/n) for returning to upper level of the program, terminate the program when execute in main menu
 bool exit(char msg[]){
 	char isexit;
-	
+
 	while(1){
 		//Ask User for input
 		cout << msg << endl;
@@ -147,4 +150,9 @@ void credit(){
 //Change the char of the blocks
 void blockCharC(char x){
 	blockChar = x;
+}
+
+//Start the Game
+void startGame(){
+
 }
