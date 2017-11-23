@@ -19,54 +19,27 @@ void startGame();
 class Block
 {
 public:
-	//create block for player to pick with blockTemplate(block type, index number)
-	void blockTemplate(int x, int y)
-	{
-		blockIndex = y;
-		switch(x){
-			//block types
-		case 1: blockS = {blockChar}; placeScore = 10;
-			break;
-		case 2: blockS = {blockChar, blockChar}; placeScore = 20;
-			break;
-		case 3: blockS = {blockChar, blockChar, blockChar}; placeScore = 30;
-			break;
-		case 4: blockS = {blockChar, blockChar, blockChar, blockChar}; placeScore = 40;
-			break;
-		case 5: blockS = {blockChar, blockChar, blockChar, blockChar, blockChar}; placeScore = 0;
-			break;
-		case 6: blockS = {{blockChar}, {blockChar}}; placeScore = 20;
-			break;
-		case 7: blockS = {{blockChar}, {blockChar}, {blockChar}}; placeScore = 30;
-			break;
-		case 8: blockS = {{blockChar}, {blockChar}, {blockChar}, {blockChar}}; placeScore = 40;
-			break;
-		case 9: blockS = {{blockChar}, {blockChar}, {blockChar}, {blockChar}, {blockChar}}; placeScore = 0;
-			break;
-		case 10: blockS = {{blockChar}, {blockChar, blockChar}}; placeScore = 30;
-			break;
-		case 11: blockS = {{' ', blockChar}, {blockChar, blockChar}}; placeScore = 30;
-			break;
-		case 12: blockS = {{blockChar, blockChar}, {blockChar}}; placeScore = 30;
-			break;
-		case 13: blockS = {{blockChar, blockChar}, {' ', blockChar}}; placeScore = 30;
-			break;
-		case 14: blockS = {{blockChar}, {blockChar}, {blockChar, blockChar, blockChar}}; placeScore = 50;
-			break;
-		case 15: blockS = {{' ', ' ', blockChar}, {' ', ' ', blockChar}, {blockChar, blockChar, blockChar}}; placeScore = 50;
-			break;
-		case 16: blockS = {{blockChar, blockChar, blockChar}, {blockChar}, {blockChar}}; placeScore = 50;
-			break;
-		case 17: blockS = {{blockChar, blockChar, blockChar}, {' ', ' ', blockChar}, {' ', ' ', blockChar}}; placeScore = 50;
-			break;
-		case 18: blockS = {{blockChar, blockChar}, {blockChar, blockChar}}; placeScore = 40;
-			break;
-		case 19: blockS = {{blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}}; placeScore = 90;
-			break;
-		}
+	//create block for player to pick with blockTemplate(block type, block type)
+	Block(char block[5][5],int x){
+		for(int i=0;i<5;i++)
+			for(int j=0;j<5;j++)
+				blockS[i][j] = block[i][j];
+		blockIndex = x;
 	}
+
+	void print(){
+
+		for(int i=0;i<5;i++){
+			for(int j=0;j<5;j++){
+				cout << blockS[i][j];
+			}
+			cout << endl;
+		}
+
+	}
+
 private:
-	char blockS[5][5] = {{' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' '}};
+	char blockS[5][5];
 	int placeScore, blockIndex;
 };
 
@@ -75,6 +48,13 @@ int main()
 {
 	int choice;
 	char mainmenuExit[40] = "You really want to exit : ???";
+	/*
+	 * Plz copy zero's work to here
+	 * Please name h for horizontal block
+	 * v for vectical block e.t.c
+	 */
+	char h1[5][5] = {blockChar};
+	char h2[5][5] = {blockChar,blockChar};
 
 	//The main loop of the game, only break out when user want to exit
 	while(1){
