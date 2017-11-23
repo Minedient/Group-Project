@@ -55,6 +55,23 @@ int main()
 	 */
 	char h1[5][5] = {blockChar};
 	char h2[5][5] = {blockChar,blockChar};
+	char h3[5][5] = {blockChar,blockChar,blockChar};
+	char h4
+	char h5
+	char v2
+	char v3
+	char v4
+	char v5
+	char L11
+	char L12
+	char L13
+	char L14
+	char L21
+	char L22
+	char L23
+	char L24
+	char s1
+	char s2
 
 	//The main loop of the game, only break out when user want to exit
 	while(1){
