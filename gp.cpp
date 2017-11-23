@@ -74,7 +74,7 @@ private:
 int main()
 {
 	int choice;
-	char mainmenuExit[40] = "You really want to exit : |???";
+	char mainmenuExit[40] = "You really want to exit : ???";
 
 	//The main loop of the game, only break out when user want to exit
 	while(1){
