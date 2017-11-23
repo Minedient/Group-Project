@@ -38,7 +38,7 @@ public:
 			case 19: blockS = {{blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}}; placeScore = 90; break;
 	}
 private:
-	char blockS[5][5];
+	char blockS[5][5] = {{' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' '}, {' ', ' ', ' ', ' ', ' '}};
 	int placeScore, blockIndex;
 }
 
