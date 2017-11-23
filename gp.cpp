@@ -87,7 +87,7 @@ int main()
 		cout << "[4] Credits" << endl;
 		cout << "[5] Exit" << endl;
 		cout << "*****************" << endl;
-		cout << "Choice (1-5): ";
+		cout << "Option (1-5): ";
 		cin >> choice;
 
 		switch (choice){
