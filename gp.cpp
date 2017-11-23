@@ -7,6 +7,11 @@ using namespace std;
 bool tBombOn = 0, pcDemoOn = 0;
 char blockChar = 'X';
 int boardSize = 10;
+void blockBoard();
+bool exit(char[]);
+void credit();
+void blockCharC(char);
+
 
 class Block
 {
@@ -62,13 +67,6 @@ private:
 	int placeScore, blockIndex;
 }
 
-void blockBoard();
-
-bool exit(char[]);
-
-void credit();
-
-void blockCharC(char);
 
 int main()
 {
