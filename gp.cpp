@@ -57,10 +57,12 @@ public:
 		}
 	}
 	
+	//check if a block unit at (i, j) exists
 	bool blockExist(int i, int j){
 		return (blockS[i][j] == ' ') ? 0 : 1;
 	}
 	
+	//records the size of the block
 	void blockSize(int h, int w){
 		for (int i; i < 5; i++){
 			for (int j; j < 5; j++){
@@ -68,6 +70,16 @@ public:
 					h = (h < j) ? j : h;
 					w = i;
 				}
+			}
+		}
+	}
+	
+	//records the position of the leftmost block
+	void blockLeftPos(int h){
+		for (int i; i < 5; i++){
+			if (blockExist(0, i) == 1){
+				h = i;
+				break;
 			}
 		}
 	}
@@ -104,12 +116,14 @@ public:
 	//Some game logic appear in this function, becare.
 	//Check if the location is valid for the block to be placed; returns 0 if not, and 1 if yes
 	bool blockLocCheck(Block x, int col, int row){
-		int blockH, blockW;
+		int blockH, blockW, blockL;
 		x.blockSize(blockH, blockW);
-		
+		x.blockLeftPos(blockL);
+		col -= blockL;
 		for (int i = 0; i < blockW; i++){
 			for (int j = 0; j < blockH; j++){
-				if (x.blockExist(i, j) == 1 && (realboard[i+row][j+col] != ' ' || i+row > boardSize || j+col > boardSize)){
+				//conditions: will a block be placed? is the space already occupied? is the block beyond the board?
+				if (x.blockExist(i, j) == 1 && (realboard[i+row][j+col] != ' ' || i+row > boardSize || j+col > boardSize || i+col < 0 || j+col < 0)){
 					return 0;
 				}
 				else continue;
@@ -129,7 +143,7 @@ public:
 			}
 		}
 	}
-	
+	//Checks if no more blocks can be placed; If so, returns 1; if not, returns 0
 	bool gameOver(Block x){
 		for (int i = 0; i < boardSize; i++){
 			for (int j = 0; j < boardSize; j++){
