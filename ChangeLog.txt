@@ -18,3 +18,6 @@
      02:01  created the greaterchessboard(Chessboard shown to player)
      02:01  DEBUG: remove the bug when you type !(1-5) in main menu, the screen will glitch
      02:36  Everything broken and then got better. Somehow. In other words, created settingsMenu()
+     12:03  Modify the credit()
+     12:08  modify the credit(), Also plz remember to write changelog
+     
