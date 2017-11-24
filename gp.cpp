@@ -84,6 +84,15 @@ public:
 			}
 		}
 	}
+	
+	
+	//Some game logic appear in this function, becare.
+
+	//Function to put block on board (col in A-F row in 0-9)
+	void putBlock(Block x, int col,int row){
+
+	}
+
 
 	//Construtor
 	Board(){
