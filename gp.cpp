@@ -32,6 +32,11 @@ char s2[4][4] = {{blockChar, blockChar, blockChar}, {blockChar, blockChar, block
 class Block
 {
 public:
+	//Default construtor
+	Block(){
+
+	}
+	
 	//Construtor to create block for player to pick(block type, index, blockCount) 
 	Block(char block[5][5],int x,int b){
 		for(int i=0;i<5;i++)
