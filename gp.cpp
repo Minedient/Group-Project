@@ -55,7 +55,10 @@ public:
 			}
 			cout << endl;
 		}
-
+	}
+	
+	bool blockExist(int i, int j){
+		return (blockS[i][j] == ' ') ? 0 : 1;
 	}
 
 private:
@@ -88,10 +91,29 @@ public:
 	
 	
 	//Some game logic appear in this function, becare.
-
+	//Check if the location is valid for the block to be placed; returns 0 if not, and 1 if yes
+	bool blockLocCheck(Block x, int col, int row){
+		for (int i = 0; i < 5; i++){
+			for (int j = 0; j < 5; j++){
+				if (x.blockExist(i, j) == 1 && (realboard[i+row][j+col] != ' ' || i+row > boardSize || j+col > boardSize)){
+					return 0;
+				}
+				else continue;
+			}
+		}
+		return 1;
+	}
+	
 	//Function to put block on board (col in A-F row in 0-9)
 	void putBlock(Block x, int col,int row){
-
+		for (int i = 0; i < 5; i++){
+			for (int j = 0; j < 5; j++){
+				if (x.blockExist(i, j) == 0){
+					realboard[i+row][j+col] = blockChar;
+				}
+				else continue;
+			}
+		}
 	}
 
 
@@ -148,7 +170,6 @@ void credit();
 void blockCharC();
 void startGame();
 void settingsMenu();
-void instruction();
 Block genBlock(int);
 bool locationD(char[]);
 
@@ -180,7 +201,7 @@ int main()
 		switch (choice){
 		case '1': startGame() ; break;
 		case '2': system("cls");settingsMenu(); break;
-		case '3': instruction() ; break;
+		case '3': /*P3 here*/ ; break;
 		case '4': credit() ; break;
 		case '5': if(exit(mainmenuExit) == true)
 					return 0;
@@ -222,20 +243,10 @@ bool exit(char msg[]){
 void credit(){
 	//clear the screen first
 	system("cls");
-	cout << "~~~~~~~~~Credit Page~~~~~~~~~~" << endl;
 	cout << "Leung Ho HIN  16187002A 103A" << endl;
 	cout << "Leung Ka MING 16091968A 103A" << endl;
 	cout << "MAK HOI KIT   16027276A 103C" << endl;
 	cout << "SARKI JOSHAN  1698910AA 103B" << endl;
-	
-	cout << "  _______ _                 _           __                   _             _             " << endl;
-	cout << " |__   __| |               | |         / _|                 | |           (_)            " << endl;
-	cout << "    | |  | |__   __ _ _ __ | | _____  | |_ ___  _ __   _ __ | | __ _ _   _ _ _ __   __ _ " << endl;
-	cout << "    | |  | '_ \ / _` | '_ \| |/ / __| |  _/ _ \| '__| | '_ \| |/ _` | | | | | '_ \ / _` |" << endl;
-	cout << "    | |  | | | | (_| | | | |   <\__ \ | || (_) | |    | |_) | | (_| | |_| | | | | | (_| |" << endl;
-	cout << "    |_|  |_| |_|\__,_|_| |_|_|\_\___/ |_| \___/|_|    | .__/|_|\__,_|\__, |_|_| |_|\__, |" << endl;
-	cout << "                                                      | |             __/ |         __/ |" << endl;
-	cout << "                                                      |_|            |___/         |___/ " << endl;
 	
 	system("pause");
 
@@ -244,7 +255,7 @@ void credit(){
 //Change the char of the blocks
 void blockCharC(){
 	int loopCheck = 0;
-	int charChoice;
+	char charChoice;
 	
 	while(loopCheck == 0){
 		cout << "*** Block Character Selection ***" << endl;
@@ -280,7 +291,7 @@ void startGame(){
 	int blockchoice;
 	Block thisBlock;
 	char location[3];
-	bool ischoice,isdecodable;
+	bool ischoice,isdecodable, isValid;
 	bool e;
 
 	srand(time(0));
@@ -315,18 +326,26 @@ void startGame(){
 	}
 
 	isdecodable = false;
-	while(isdecodable == false){
+	isValid = 0;
+	while(isdecodable == false || isValid == 0){
 		cout << "Which location you want to place the block? For example:A0" << endl;
 		cin >> location;
 		e = locationD(location);
 		if(e==true){
-			cout << "Please input a valid command! For example: A0";
-		}else{
+			cout << "Please input a valid command! For example: A0" << endl;
+		}
+		else if (board.blockLocCheck(thisBlock,location[0]-'0',location[1]-'0') == 0){
+			cout << "The block cannot fit into the location! Try again." << endl;
+		}
+		else{
 			isdecodable = true;
+			isValid = 1;
 		}
 	}
+	
+	
 	//Time to place block
-	board.putBlock(thisBlock,location[0]-'A',location[1]-'0');
+	board.putBlock(thisBlock,location[0]-'0',location[1]-'0');
 
 	system("pause");
 }
@@ -366,11 +385,6 @@ void settingsMenu(){
 		//Clear Screen
 		system("cls");
 	};
-}
-
-//Gmae instruction
-void instruction(){
-	
 }
 
 //Generate block for creating the list for user to choose
