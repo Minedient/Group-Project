@@ -158,7 +158,7 @@ void credit(){
 
 //Change the char of the blocks
 void blockCharC(){
-	int loopCheck = 0;
+	bool loopCheck = 0;
 	char charChoice;
 	
 	while(loopCheck == 0){
@@ -181,7 +181,33 @@ void blockCharC(){
 				loopCheck = 0;
 		}
 		
-		if (loopCheck != 0) cout << "Block Character has been changed.";
+		if (loopCheck != 0) cout << "Block character has been changed.";
+		
+		system("pause");
+		system("cls");
+	}
+}
+
+//Change the size of the board
+void boardSizeC(){
+	bool loopCheck = 0;
+	int sizeChoice;
+	
+	while(loopCheck == 0){
+		cout << "*** Board Size Selection ***" << endl;
+		cout << "Choose a board size between 7 and 10:";
+		cin >> sizeChoice;
+		
+		loopCheck = 1;
+		if (sizeChoice >= 7 && sizeChoice <= 10){
+			boardSize = sizeChoice;
+		}
+		else{
+			cout << "Please enter an integer between 7 and 10." << endl;
+			loopCheck = 0;
+		}
+		
+		if (loopCheck != 0) cout << "Board size has been changed.";
 		
 		system("pause");
 		system("cls");
