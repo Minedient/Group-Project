@@ -145,6 +145,8 @@ bool exit(char msg[]){
 
 //Show the credit page
 void credit(){
+	//clear the screen first
+	system("cls");
 	cout << "MAK HOI KIT   16027276A 103C" << endl;
 	cout << "SARKI JOSHAN  16......A 103B" << endl;
 	
