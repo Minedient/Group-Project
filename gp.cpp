@@ -10,6 +10,7 @@ char blockChar = 'X';
 int boardSize = 10, tBombCount = 9;
 
 //Declare function
+void blockBoard();
 bool exit(char[]);
 void credit();
 void blockCharC();
@@ -44,75 +45,6 @@ private:
 	int placeScore, blockIndex;
 };
 
-class Board{
-
-public:
-
-	//print the big chessboard
-	void print(){
-		for(int i=0;i<13;i++){
-				for(int j=0;j<13;j++){
-					cout << boardSpace[i][j];
-				}
-				cout << endl;
-			}
-	}
-	
-	//Update the chessboard from Real Game Board to Show Board
-	void update(){
-		for(int i=3;i<boardSize+3-2;i++){
-			for(int j=3;j<boardSize+3-2;j++){
-				boardSpace[i][j] = realboard[i][j];
-			}
-		}
-	}
-	
-	//Construtor
-	Board(){
-		//Create a clean 13*13 board
-		for (int i = 0; i < 13; i++){
-				for (int j = 0; j < 13; j++){
-					boardSpace[i][j] = ' ';
-				}
-			}
-
-		//Create a clean varSize board(Real Game Board)
-
-		for (int i = 0; i < boardSize; i++){
-			for (int j = 0; j < boardSize; j++){
-				realboard[i][j] = ' ';
-			}
-		}
-
-		//generate size sensitive top
-		for(int i=2;i<boardSize+3-1;i++){
-			boardSpace[0][i] = 48+i-2;
-		}
-
-		//generate size sensitive side
-		for(int i=2;i<boardSize+3-1;i++){
-			boardSpace[i][0] = 65+i-2;
-		}
-
-		//Generate the outline of the board
-		for(int i=0;i<boardSize+3;i++){
-			for(int j=0;j<boardSize+3;j++){
-				if((i==1||i==boardSize+3-1) && j>=1)
-					boardSpace[i][j] = '@';
-				if(i!=0){
-					if(j==1 || j== boardSize+3-1)
-						boardSpace[i][j] = '-';
-				}
-			}
-
-		}
-
-	}
-
-private:
-	char boardSpace[13][13];
-	char realboard[10][10];
-};
 
 int main()
 {
@@ -175,6 +107,19 @@ int main()
 	};
 }
 
+//The real chessboard
+void blockBoard(){
+	char boardSpace[10][10];
+
+	//store empty space into board
+	for (int i = 0; i < boardSize; i++){
+		for (int j = 0; j < boardSize; j++){
+			boardSpace[i][j] = ' ';
+		}
+	}
+
+}
+
 //Macro exit function (with y/n) for returning to upper level of the program, terminate the program when execute in main menu
 bool exit(char msg[]){
 	char isexit;
@@ -205,7 +150,7 @@ void credit(){
 	cout << "Leung Ho HIN  16187002A 103A" << endl;
 	cout << "Leung Ka MING 16091968A 103A" << endl;
 	cout << "MAK HOI KIT   16027276A 103C" << endl;
-	cout << "SARKI JOSHAN  16......A 103B" << endl;
+	cout << "SARKI JOSHAN  1698910AA 103B" << endl;
 	
 	system("pause");
 
@@ -213,7 +158,7 @@ void credit(){
 
 //Change the char of the blocks
 void blockCharC(){
-	bool loopCheck = 0;
+	int loopCheck = 0;
 	char charChoice;
 	
 	while(loopCheck == 0){
@@ -236,33 +181,7 @@ void blockCharC(){
 				loopCheck = 0;
 		}
 		
-		if (loopCheck != 0) cout << "Block character has been changed.";
-		
-		system("pause");
-		system("cls");
-	}
-}
-
-//Change the size of the board
-void boardSizeC(){
-	bool loopCheck = 0;
-	int sizeChoice;
-	
-	while(loopCheck == 0){
-		cout << "*** Board Size Selection ***" << endl;
-		cout << "Choose a board size between 7 and 10:";
-		cin >> sizeChoice;
-		
-		loopCheck = 1;
-		if (sizeChoice >= 7 && sizeChoice <= 10){
-			boardSize = sizeChoice;
-		}
-		else{
-			cout << "Please enter an integer between 7 and 10." << endl;
-			loopCheck = 0;
-		}
-		
-		if (loopCheck != 0) cout << "Board size has been changed.";
+		if (loopCheck != 0) cout << "Block Character has been changed.";
 		
 		system("pause");
 		system("cls");
@@ -273,9 +192,49 @@ void boardSizeC(){
 void startGame(){
 	
 	system("cls");
-	
-	Board board;
-	board.print();
+	int gboardSize = boardSize+3;
+
+	//The chessboard with A-J and 0-9
+	char greaterboard[gboardSize][gboardSize];
+
+	//Fill the board with ' ' first
+	for(int i=0;i<gboardSize;i++){
+		for(int j=0;j<gboardSize;j++){
+			greaterboard[i][j] = ' ';
+		}
+	}
+
+	//generate size sensitive top
+	for(int i=2;i<gboardSize-1;i++){
+		greaterboard[0][i] = 48+i-2;
+	}
+
+	//generate size sensitive side
+	for(int i=2;i<gboardSize-1;i++){
+		greaterboard[i][0] = 65+i-2;
+	}
+
+	//Generate the outline of the board
+	for(int i=0;i<gboardSize;i++){
+		for(int j=0;j<gboardSize;j++){
+			if((i==1||i==gboardSize-1) && j>=1)
+				greaterboard[i][j] = '|';
+			if(i!=0){
+				if(j==1 || j== gboardSize-1)
+					greaterboard[i][j] = '-';
+			}
+		}
+
+	}
+
+	//Show the board
+	for(int i=0;i<gboardSize;i++){
+		for(int j=0;j<gboardSize;j++){
+			cout << greaterboard[i][j];
+		}
+		cout << endl;
+	}
+
 
 	system("pause");
 }
