@@ -20,4 +20,5 @@
      02:36  Everything broken and then got better. Somehow. In other words, created settingsMenu()
      12:03  Modify the credit()
      12:08  modify the credit(), Also plz remember to write changelog
+     14:27  mod->credit()
      
