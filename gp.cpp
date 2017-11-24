@@ -247,10 +247,10 @@ void blockCharC(){
 		
 		loopCheck = 1;
 		switch(charChoice){
-			case '1': blockChar = 'X'; break;
-			case '2': blockChar = 'O'; break;
-			case '3': blockChar = '@'; break;
-			case '4': blockChar = '#'; break;
+			case 1: blockChar = 'X'; break;
+			case 2: blockChar = 'O'; break;
+			case 3: blockChar = '@'; break;
+			case 4: blockChar = '#'; break;
 			default: cout << "Please enter choice 1 - 4 only." << endl;
 				loopCheck = 0;
 		}
