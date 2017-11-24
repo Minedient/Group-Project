@@ -221,6 +221,7 @@ bool exit(char msg[]){
 void credit(){
 	//clear the screen first
 	system("cls");
+	cout << "~~~~~~~~~Credit Page~~~~~~~~~~" << endl;
 	cout << "Leung Ho HIN  16187002A 103A" << endl;
 	cout << "Leung Ka MING 16091968A 103A" << endl;
 	cout << "MAK HOI KIT   16027276A 103C" << endl;
