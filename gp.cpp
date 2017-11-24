@@ -45,6 +45,76 @@ private:
 	int placeScore, blockIndex;
 };
 
+class Board{
+
+public:
+
+	//print the big chessboard
+	void print(){
+		for(int i=0;i<13;i++){
+				for(int j=0;j<13;j++){
+					cout << boardSpace[i][j];
+				}
+				cout << endl;
+			}
+	}
+
+	//Update the chessboard from Real Game Board to Show Board
+	void update(){
+		for(int i=3;i<boardSize+3-2;i++){
+			for(int j=3;j<boardSize+3-2;j++){
+				boardSpace[i][j] = realboard[i][j];
+			}
+		}
+	}
+
+	//Construtor
+	Board(){
+		//Create a clean 13*13 board
+		for (int i = 0; i < 13; i++){
+				for (int j = 0; j < 13; j++){
+					boardSpace[i][j] = ' ';
+				}
+			}
+
+		//Create a clean varSize board(Real Game Board)
+
+		for (int i = 0; i < boardSize; i++){
+			for (int j = 0; j < boardSize; j++){
+				realboard[i][j] = ' ';
+			}
+		}
+
+		//generate size sensitive top
+		for(int i=2;i<boardSize+3-1;i++){
+			boardSpace[0][i] = 48+i-2;
+		}
+
+		//generate size sensitive side
+		for(int i=2;i<boardSize+3-1;i++){
+			boardSpace[i][0] = 65+i-2;
+		}
+
+		//Generate the outline of the board
+		for(int i=0;i<boardSize+3;i++){
+			for(int j=0;j<boardSize+3;j++){
+				if((i==1||i==boardSize+3-1) && j>=1)
+					boardSpace[i][j] = '@';
+				if(i!=0){
+					if(j==1 || j== boardSize+3-1)
+						boardSpace[i][j] = '-';
+				}
+			}
+
+		}
+
+	}
+
+private:
+	char boardSpace[13][13];
+	char realboard[10][10];
+};
+
 
 int main()
 {
@@ -105,19 +175,6 @@ int main()
 		//Clear Screen
 		system("cls");
 	};
-}
-
-//The real chessboard
-void blockBoard(){
-	char boardSpace[10][10];
-
-	//store empty space into board
-	for (int i = 0; i < boardSize; i++){
-		for (int j = 0; j < boardSize; j++){
-			boardSpace[i][j] = ' ';
-		}
-	}
-
 }
 
 //Macro exit function (with y/n) for returning to upper level of the program, terminate the program when execute in main menu
@@ -192,50 +249,11 @@ void blockCharC(){
 void startGame(){
 	
 	system("cls");
-	int gboardSize = boardSize+3;
 
-	//The chessboard with A-J and 0-9
-	char greaterboard[gboardSize][gboardSize];
+	Board board;
+	board.print();
 
-	//Fill the board with ' ' first
-	for(int i=0;i<gboardSize;i++){
-		for(int j=0;j<gboardSize;j++){
-			greaterboard[i][j] = ' ';
-		}
-	}
-
-	//generate size sensitive top
-	for(int i=2;i<gboardSize-1;i++){
-		greaterboard[0][i] = 48+i-2;
-	}
-
-	//generate size sensitive side
-	for(int i=2;i<gboardSize-1;i++){
-		greaterboard[i][0] = 65+i-2;
-	}
-
-	//Generate the outline of the board
-	for(int i=0;i<gboardSize;i++){
-		for(int j=0;j<gboardSize;j++){
-			if((i==1||i==gboardSize-1) && j>=1)
-				greaterboard[i][j] = '|';
-			if(i!=0){
-				if(j==1 || j== gboardSize-1)
-					greaterboard[i][j] = '-';
-			}
-		}
-
-	}
-
-	//Show the board
-	for(int i=0;i<gboardSize;i++){
-		for(int j=0;j<gboardSize;j++){
-			cout << greaterboard[i][j];
-		}
-		cout << endl;
-	}
-
-
+	
 	system("pause");
 }
 
