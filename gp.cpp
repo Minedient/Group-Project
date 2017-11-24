@@ -136,7 +136,7 @@ public:
 		for (int i = 0; i < blockW; i++){
 			for (int j = 0; j < blockH; j++){
 				//conditions: will a block be placed? is the space already occupied? is the block beyond the board?
-				if (x.blockExist(i, j) == 1 && (realboard[i+row][j+col] == blockChar || i+row > boardSize || j+col > boardSize || i+col < 0 || j+col < 0)){
+				if (x.blockExist(i, j) == 1 && (realboard[i+col][j+row] == blockChar || i+col > boardSize || j+row > boardSize || i+col < 0 || j+col < 0)){
 					return 0;
 				}
 				else continue;
