@@ -5,7 +5,7 @@
 #include <ctime>
 using namespace std;
 
-bool tBombOn = 0, pcDemoOn = 0;
+bool tBombOn = 0, pcDemoOn = 0, PC_Play = 0;
 char blockChar = 'X';
 int boardSize = 10, tBombCount = 9;
 
@@ -262,7 +262,7 @@ void PCdemo(){
 	while (!Changed){
 		system("cls");
 		cout << "Current: ";
-		if (PC_Play){
+		if (PC_Play == true){
 			cout << "Demo Game By PC" << endl;
 		}else{
 			cout << "Game By Player" << endl;
