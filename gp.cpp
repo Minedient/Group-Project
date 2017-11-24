@@ -257,10 +257,56 @@ void startGame(){
 	system("pause");
 }
 
+void PCdemo(){
+	bool Changed = false;
+	while (!Changed){
+		system("cls");
+		cout << "Current: ";
+		if (PC_Play){
+			cout << "Demo Game By PC" << endl;
+		}else{
+			cout << "Game By Player" << endl;
+		}
+		cout << "**************" << endl;
+		cout << "Input '1' to change to demo game by pc" << endl;
+		cout << "Input '2' to change to game by player" << endl;
+		cout << "Input '3' to go back to Setting Menu. " << endl;
+		cout << "**************" << endl;
+		cout << "Choice: ";
+		int option;
+		if(!(cin >> option)){
+			option = 0;
+			cin.clear();
+			cin.ignore();
+		}
+		switch (option){
+			case 1:
+				PC_Play = true;
+				Changed = true;
+				break;
+			case 2:
+				PC_Play = false;
+				Changed = true;
+				break;
+			case 3:
+				Changed = true;
+				break;
+			default:
+				cout << "Please enter '1' or '2' or '3'" << endl;
+				system("pause");
+				break;
+		}
+	}	
+}
+
+	
+}
+
+
 //Load Settings configuration
 void settingsMenu(){
 	bool setExit = 0;
-	char choice;
+	int choice;
 	char settingsMenuExit[40] = "Do you wish to return to main menu?";
 	
 	while(setExit == 0){
@@ -276,12 +322,12 @@ void settingsMenu(){
 		cin >> choice;
 
 		switch (choice){
-		case '1': /*PC Demo toggle*/ ; continue;
-		case '2': /*Timer Bomb toggle*/ ; continue;
-		case '3': /*Board Size option*/ ; continue;
-		case '4': /*Bomb Timer option*/ ; continue;
-		case '5': blockCharC(); continue;
-		case '6': if(exit(settingsMenuExit) == true) setExit = 1;
+		case 1: /*PC Demo toggle*/ ; continue;
+		case 2: /*Timer Bomb toggle*/ ; continue;
+		case 3: /*Board Size option*/ ; continue;
+		case 4: /*Bomb Timer option*/ ; continue;
+		case 5: blockCharC(); continue;
+		case 6: if(exit(settingsMenuExit) == true) setExit = 1;
 			continue;
 		default:
 			cout << "Please enter choice 1 - 6 only." << endl;
