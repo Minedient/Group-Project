@@ -320,51 +320,6 @@ void startGame(){
 	system("pause");
 }
 
-void PCdemo(){
-	bool Changed = false;
-	while (!Changed){
-		system("cls");
-		cout << "Current: ";
-		if (PC_Play == true){
-			cout << "Demo Game By PC" << endl;
-		}else{
-			cout << "Game By Player" << endl;
-		}
-		cout << "**************" << endl;
-		cout << "Input '1' to change to demo game by pc" << endl;
-		cout << "Input '2' to change to game by player" << endl;
-		cout << "Input '3' to go back to Setting Menu. " << endl;
-		cout << "**************" << endl;
-		cout << "Choice: ";
-		int option;
-		if(!(cin >> option)){
-			option = 0;
-			cin.clear();
-			cin.ignore();
-		}
-		switch (option){
-			case 1:
-				PC_Play = true;
-				Changed = true;
-				break;
-			case 2:
-				PC_Play = false;
-				Changed = true;
-				break;
-			case 3:
-				Changed = true;
-				break;
-			default:
-				cout << "Please enter '1' or '2' or '3'" << endl;
-				system("pause");
-				break;
-		}
-	}	
-}
-
-	
-}
-
 
 //Load Settings configuration
 void settingsMenu(){
