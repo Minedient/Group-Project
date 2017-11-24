@@ -91,7 +91,7 @@ int main()
 
 		switch (choice){
 		case '1': startGame() ; break;
-		case '2': settingsMenu(); break;
+		case '2': system("cls");settingsMenu(); break;
 		case '3': /*P3 here*/ ; break;
 		case '4': credit() ; break;
 		case '5': if(exit(mainmenuExit) == true)
