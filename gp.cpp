@@ -54,25 +54,25 @@ int main()
 	 * Please name h for horizontal block
 	 * v for vectical block e.t.c
 	 */
-	char h1[5][5] = {blockChar};
-	char h2[5][5] = {blockChar,blockChar};
-	char h3[5][5] = {blockChar,blockChar,blockChar};
-	char h4[5][5] = {blockChar, blockChar, blockChar, blockChar};
-	char h5[5][5] = {blockChar, blockChar, blockChar, blockChar, blockChar};
-	char v2[5][5] = {{blockChar}, {blockChar}};
-	char v3[5][5] = {{blockChar}, {blockChar}, {blockChar}};
-	char v4[5][5] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}};
-	char v5[5][5] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}, {blockChar}};
-	char L11[5][5] = {{blockChar}, {blockChar, blockChar}};
-	char L12[5][5] = {{' ', blockChar}, {blockChar, blockChar}};
-	char L13[5][5] = {{blockChar, blockChar}, {blockChar}};
-	char L14[5][5] = {{blockChar, blockChar}, {' ', blockChar}};
-	char L21[5][5] = {{blockChar}, {blockChar}, {blockChar, blockChar, blockChar}};
-	char L22[5][5] = {{' ', ' ', blockChar}, {' ', ' ', blockChar}, {blockChar, blockChar, blockChar}};
-	char L23[5][5] = {{blockChar, blockChar, blockChar}, {blockChar}, {blockChar}};
-	char L24[5][5] = {{blockChar, blockChar, blockChar}, {' ', ' ', blockChar}, {' ', ' ', blockChar}};
-	char s1[5][5] = {{blockChar, blockChar}, {blockChar, blockChar}};
-	char s2[5][5] = {{blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}};
+	char h1[4][4] = {blockChar};
+	char h2[4][4] = {blockChar,blockChar};
+	char h3[4][4] = {blockChar,blockChar,blockChar};
+	char h4[4][4] = {blockChar, blockChar, blockChar, blockChar};
+	char h5[4][4] = {blockChar, blockChar, blockChar, blockChar, blockChar};
+	char v2[4][4] = {{blockChar}, {blockChar}};
+	char v3[4][4] = {{blockChar}, {blockChar}, {blockChar}};
+	char v4[4][4] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}};
+	char v5[4][4] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}, {blockChar}};
+	char L11[4][4] = {{blockChar}, {blockChar, blockChar}};
+	char L12[4][4] = {{' ', blockChar}, {blockChar, blockChar}};
+	char L13[4][4] = {{blockChar, blockChar}, {blockChar}};
+	char L14[4][4] = {{blockChar, blockChar}, {' ', blockChar}};
+	char L21[4][4] = {{blockChar}, {blockChar}, {blockChar, blockChar, blockChar}};
+	char L22[4][4] = {{' ', ' ', blockChar}, {' ', ' ', blockChar}, {blockChar, blockChar, blockChar}};
+	char L23[4][4] = {{blockChar, blockChar, blockChar}, {blockChar}, {blockChar}};
+	char L24[4][4] = {{blockChar, blockChar, blockChar}, {' ', ' ', blockChar}, {' ', ' ', blockChar}};
+	char s1[4][4] = {{blockChar, blockChar}, {blockChar, blockChar}};
+	char s2[4][4] = {{blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}};
 
 	//The main loop of the game, only break out when user want to exit
 	while(1){
@@ -108,7 +108,7 @@ int main()
 
 //The real chessboard
 void blockBoard(){
-	char boardSpace[10][10];
+	char boardSpace[9][9];
 
 	//store empty space into board
 	for (int i = 0; i < boardSize; i++){
