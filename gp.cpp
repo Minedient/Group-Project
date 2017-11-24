@@ -109,7 +109,7 @@ int main()
 
 //The real chessboard
 void blockBoard(){
-	char boardSpace[9][9];
+	char boardSpace[10][10];
 
 	//store empty space into board
 	for (int i = 0; i < boardSize; i++){
@@ -147,9 +147,12 @@ bool exit(char msg[]){
 void credit(){
 	//clear the screen first
 	system("cls");
+	cout << "Leung Ho HIN  16187002A 103A" << endl;
+	cout << "Leung Ka Ming 16091968A 103A" << endl;
 	cout << "MAK HOI KIT   16027276A 103C" << endl;
 	cout << "SARKI JOSHAN  16......A 103B" << endl;
 	
+	system("pause");
 
 }
 
