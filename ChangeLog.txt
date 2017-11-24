@@ -21,4 +21,4 @@
      12:03  Modify the credit()
      12:08  modify the credit(), Also plz remember to write changelog
      14:27  mod->credit()
-     
+     18:52  finished blockCharC()
