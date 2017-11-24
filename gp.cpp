@@ -233,7 +233,7 @@ void credit(){
 //Change the char of the blocks
 void blockCharC(){
 	int loopCheck = 0;
-	char charChoice;
+	int charChoice;
 	
 	while(loopCheck == 0){
 		cout << "*** Block Character Selection ***" << endl;
