@@ -23,3 +23,5 @@
      14:27  mod->credit()
      18:52  finished blockCharC()
      21:36  Combine old cosmetic chessboard and functional chessboard to new Board Class
+25/11/2017:
+     00:28  Added some functions to the startGame which now can show blocks and choose blocks.
