@@ -63,7 +63,7 @@ int main()
 	char v2[4][4] = {{blockChar}, {blockChar}};
 	char v3[4][4] = {{blockChar}, {blockChar}, {blockChar}};
 	char v4[4][4] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}};
-	char v5[4][4] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}, {blockChar}};
+	char v5[5][4] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}, {blockChar}};
 	char L11[4][4] = {{blockChar}, {blockChar, blockChar}};
 	char L12[4][4] = {{' ', blockChar}, {blockChar, blockChar}};
 	char L13[4][4] = {{blockChar, blockChar}, {blockChar}};
@@ -191,7 +191,7 @@ void startGame(){
 				greaterboard[i][j] = '@';
 			if(i!=0){
 				if(j==1 || j== gboardSize-1)
-					greaterboard[i][j] = '@';
+					greaterboard[i][j] = '-';
 			}
 		}
 
