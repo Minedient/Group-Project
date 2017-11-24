@@ -136,7 +136,7 @@ public:
 		for (int i = 0; i < blockW; i++){
 			for (int j = 0; j < blockH; j++){
 				//conditions: will a block be placed? is the space already occupied? is the block beyond the board?
-				if (x.blockExist(i, j) == 1 && (realboard[i+row][j+col] != ' ' || i+row > boardSize || j+col > boardSize || i+col < 0 || j+col < 0)){
+				if (x.blockExist(i, j) == 1 && (realboard[i+row][j+col] == blockChar || i+row > boardSize || j+col > boardSize || i+col < 0 || j+col < 0)){
 					return 0;
 				}
 				else continue;
@@ -167,6 +167,7 @@ public:
 			}
 			
 		}
+		return 1;
 	}
 	
 	
@@ -333,10 +334,10 @@ void blockCharC(){
 		
 		loopCheck = 1;
 		switch(charChoice){
-			case 1: blockChar = 'X'; break;
-			case 2: blockChar = 'O'; break;
-			case 3: blockChar = '@'; break;
-			case 4: blockChar = '#'; break;
+			case '1': blockChar = 'X'; break;
+			case '2': blockChar = 'O'; break;
+			case '3': blockChar = '@'; break;
+			case '4': blockChar = '#'; break;
 			default: cout << "Please enter choice 1 - 4 only." << endl;
 				loopCheck = 0;
 		}
@@ -366,8 +367,15 @@ void startGame(){
 	Block b = genBlock(1);
 	Block c = genBlock(2);
 	Board board;
-
+	
 	while(isPlaceable==true){
+		if (board.gameOver(a) == 1 && board.gameOver(b) == 1 && board.gameOver(c) == 1){
+			cout << "Game Over" << endl;
+			cout << "Final Score: " << playerScore << endl;
+			system("pause");
+			break;
+		}
+		
 		//Print score board and blocks
 
 		board.print();
