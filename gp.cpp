@@ -401,7 +401,7 @@ void settingsMenu(){
 	};
 }
 
-
+//Generate block for creating the list for user to choose
 Block genBlock(int x){
 
 	int choice = 1 + (rand() % 19);
