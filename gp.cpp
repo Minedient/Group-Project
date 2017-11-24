@@ -148,6 +148,7 @@ void credit();
 void blockCharC();
 void startGame();
 void settingsMenu();
+void instruction();
 Block genBlock(int);
 bool locationD(char[]);
 
@@ -179,7 +180,7 @@ int main()
 		switch (choice){
 		case '1': startGame() ; break;
 		case '2': system("cls");settingsMenu(); break;
-		case '3': /*P3 here*/ ; break;
+		case '3': instruction() ; break;
 		case '4': credit() ; break;
 		case '5': if(exit(mainmenuExit) == true)
 					return 0;
@@ -365,6 +366,11 @@ void settingsMenu(){
 		//Clear Screen
 		system("cls");
 	};
+}
+
+//Gmae instruction
+void instruction(){
+	
 }
 
 //Generate block for creating the list for user to choose
