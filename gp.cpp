@@ -89,7 +89,7 @@ int main()
 		cin >> choice;
 
 		switch (choice){
-		case '1': startGame ; break;
+		case '1': startGame() ; break;
 		case '2': settingsMenu(); break;
 		case '3': /*P3 here*/ ; break;
 		case '4': credit() ; break;
