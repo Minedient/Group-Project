@@ -9,25 +9,25 @@ bool tBombOn = 0, pcDemoOn = 0, PC_Play = 0;
 char blockChar = 'X';
 int boardSize = 10, tBombCount = 9;
 
-char h1[4][4] = {blockChar};
-char h2[4][4] = {blockChar,blockChar};
-char h3[4][4] = {blockChar,blockChar,blockChar};
-char h4[4][4] = {blockChar, blockChar, blockChar, blockChar};
-char h5[4][4] = {blockChar, blockChar, blockChar, blockChar, blockChar};
-char v2[4][4] = {{blockChar}, {blockChar}};
-char v3[4][4] = {{blockChar}, {blockChar}, {blockChar}};
-char v4[4][4] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}};
-char v5[5][4] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}, {blockChar}};
-char L11[4][4] = {{blockChar}, {blockChar, blockChar}};
-char L12[4][4] = {{' ', blockChar}, {blockChar, blockChar}};
-char L13[4][4] = {{blockChar, blockChar}, {blockChar}};
-char L14[4][4] = {{blockChar, blockChar}, {' ', blockChar}};
-char L21[4][4] = {{blockChar}, {blockChar}, {blockChar, blockChar, blockChar}};
-char L22[4][4] = {{' ', ' ', blockChar}, {' ', ' ', blockChar}, {blockChar, blockChar, blockChar}};
-char L23[4][4] = {{blockChar, blockChar, blockChar}, {blockChar}, {blockChar}};
-char L24[4][4] = {{blockChar, blockChar, blockChar}, {' ', ' ', blockChar}, {' ', ' ', blockChar}};
-char s1[4][4] = {{blockChar, blockChar}, {blockChar, blockChar}};
-char s2[4][4] = {{blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}};
+char h1[5][5] = {blockChar};
+char h2[5][5] = {blockChar,blockChar};
+char h3[5][5] = {blockChar,blockChar,blockChar};
+char h4[5][5] = {blockChar, blockChar, blockChar, blockChar};
+char h5[5][5] = {blockChar, blockChar, blockChar, blockChar, blockChar};
+char v2[5][5] = {{blockChar}, {blockChar}};
+char v3[5][5] = {{blockChar}, {blockChar}, {blockChar}};
+char v4[5][5] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}};
+char v5[5][5] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}, {blockChar}};
+char L11[5][5] = {{blockChar}, {blockChar, blockChar}};
+char L12[5][5] = {{' ', blockChar}, {blockChar, blockChar}};
+char L13[5][5] = {{blockChar, blockChar}, {blockChar}};
+char L14[5][5] = {{blockChar, blockChar}, {' ', blockChar}};
+char L21[5][5] = {{blockChar}, {blockChar}, {blockChar, blockChar, blockChar}};
+char L22[5][5] = {{' ', ' ', blockChar}, {' ', ' ', blockChar}, {blockChar, blockChar, blockChar}};
+char L23[5][5] = {{blockChar, blockChar, blockChar}, {blockChar}, {blockChar}};
+char L24[5][5] = {{blockChar, blockChar, blockChar}, {' ', ' ', blockChar}, {' ', ' ', blockChar}};
+char s1[5][5] = {{blockChar, blockChar}, {blockChar, blockChar}};
+char s2[5][5] = {{blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}};
 
 class Block
 {
