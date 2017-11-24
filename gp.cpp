@@ -60,6 +60,17 @@ public:
 	bool blockExist(int i, int j){
 		return (blockS[i][j] == ' ') ? 0 : 1;
 	}
+	
+	void blockSize(int h, int w){
+		for (int i; i < 5; i++){
+			for (int j; j < 5; j++){
+				if (blockExist(i,j) == 1){
+					h = (h < j) ? j : h;
+					w = i;
+				}
+			}
+		}
+	}
 
 private:
 	char blockS[5][5];
@@ -93,8 +104,11 @@ public:
 	//Some game logic appear in this function, becare.
 	//Check if the location is valid for the block to be placed; returns 0 if not, and 1 if yes
 	bool blockLocCheck(Block x, int col, int row){
-		for (int i = 0; i < 5; i++){
-			for (int j = 0; j < 5; j++){
+		int blockH, blockW;
+		x.blockSize(blockH, blockW);
+		
+		for (int i = 0; i < blockW; i++){
+			for (int j = 0; j < blockH; j++){
 				if (x.blockExist(i, j) == 1 && (realboard[i+row][j+col] != ' ' || i+row > boardSize || j+col > boardSize)){
 					return 0;
 				}
@@ -115,8 +129,20 @@ public:
 			}
 		}
 	}
-
-
+	
+	bool gameOver(Block x){
+		for (int i = 0; i < boardSize; i++){
+			for (int j = 0; j < boardSize; j++){
+				if (blockLocCheck(x, i, j) == 1){
+					return 0;
+				}
+				else continue;
+			}
+			
+		}
+	}
+	
+	
 	//Construtor
 	Board(){
 		//Create a clean 13*13 board
