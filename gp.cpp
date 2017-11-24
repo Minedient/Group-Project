@@ -293,7 +293,7 @@ void settingsMenu(){
 		switch (choice){
 		case '1': /*PC Demo toggle*/ ; continue;
 		case '2': /*Timer Bomb toggle*/ ; continue;
-		case '3': /*Board Size option*/ ; continue;
+		case '3': boardSizeC(); continue;
 		case '4': /*Bomb Timer option*/ ; continue;
 		case '5': blockCharC(); continue;
 		case '6': if(exit(settingsMenuExit) == true) setExit = 1;
