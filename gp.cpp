@@ -9,13 +9,25 @@ bool tBombOn = 0, pcDemoOn = 0, PC_Play = 0;
 char blockChar = 'X';
 int boardSize = 10, tBombCount = 9;
 
-//Declare function
-void blockBoard();
-bool exit(char[]);
-void credit();
-void blockCharC();
-void startGame();
-void settingsMenu();
+char h1[4][4] = {blockChar};
+char h2[4][4] = {blockChar,blockChar};
+char h3[4][4] = {blockChar,blockChar,blockChar};
+char h4[4][4] = {blockChar, blockChar, blockChar, blockChar};
+char h5[4][4] = {blockChar, blockChar, blockChar, blockChar, blockChar};
+char v2[4][4] = {{blockChar}, {blockChar}};
+char v3[4][4] = {{blockChar}, {blockChar}, {blockChar}};
+char v4[4][4] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}};
+char v5[5][4] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}, {blockChar}};
+char L11[4][4] = {{blockChar}, {blockChar, blockChar}};
+char L12[4][4] = {{' ', blockChar}, {blockChar, blockChar}};
+char L13[4][4] = {{blockChar, blockChar}, {blockChar}};
+char L14[4][4] = {{blockChar, blockChar}, {' ', blockChar}};
+char L21[4][4] = {{blockChar}, {blockChar}, {blockChar, blockChar, blockChar}};
+char L22[4][4] = {{' ', ' ', blockChar}, {' ', ' ', blockChar}, {blockChar, blockChar, blockChar}};
+char L23[4][4] = {{blockChar, blockChar, blockChar}, {blockChar}, {blockChar}};
+char L24[4][4] = {{blockChar, blockChar, blockChar}, {' ', ' ', blockChar}, {' ', ' ', blockChar}};
+char s1[4][4] = {{blockChar, blockChar}, {blockChar, blockChar}};
+char s2[4][4] = {{blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}};
 
 class Block
 {
@@ -115,6 +127,14 @@ private:
 	char realboard[10][10];
 };
 
+//Declare function
+bool exit(char[]);
+void credit();
+void blockCharC();
+void startGame();
+void settingsMenu();
+Block genBlock(int);
+bool locationD(char[]);
 
 int main()
 {
@@ -125,26 +145,7 @@ int main()
 	 * Please name h for horizontal block
 	 * v for vectical block e.t.c
 	 */
-	char h1[4][4] = {blockChar};
-	char h2[4][4] = {blockChar,blockChar};
-	char h3[4][4] = {blockChar,blockChar,blockChar};
-	char h4[4][4] = {blockChar, blockChar, blockChar, blockChar};
-	char h5[4][4] = {blockChar, blockChar, blockChar, blockChar, blockChar};
-	char v2[4][4] = {{blockChar}, {blockChar}};
-	char v3[4][4] = {{blockChar}, {blockChar}, {blockChar}};
-	char v4[4][4] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}};
-	char v5[5][4] = {{blockChar}, {blockChar}, {blockChar}, {blockChar}, {blockChar}};
-	char L11[4][4] = {{blockChar}, {blockChar, blockChar}};
-	char L12[4][4] = {{' ', blockChar}, {blockChar, blockChar}};
-	char L13[4][4] = {{blockChar, blockChar}, {blockChar}};
-	char L14[4][4] = {{blockChar, blockChar}, {' ', blockChar}};
-	char L21[4][4] = {{blockChar}, {blockChar}, {blockChar, blockChar, blockChar}};
-	char L22[4][4] = {{' ', ' ', blockChar}, {' ', ' ', blockChar}, {blockChar, blockChar, blockChar}};
-	char L23[4][4] = {{blockChar, blockChar, blockChar}, {blockChar}, {blockChar}};
-	char L24[4][4] = {{blockChar, blockChar, blockChar}, {' ', ' ', blockChar}, {' ', ' ', blockChar}};
-	char s1[4][4] = {{blockChar, blockChar}, {blockChar, blockChar}};
-	char s2[4][4] = {{blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}};
-
+	
 	//The main loop of the game, only break out when user want to exit
 	while(1){
 		cout << endl;
