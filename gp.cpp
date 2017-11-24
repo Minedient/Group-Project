@@ -38,12 +38,13 @@ public:
 	}
 	
 	//Construtor to create block for player to pick(block type, index, blockCount) 
-	Block(char block[5][5],int x,int b){
+	Block(char block[5][5],int x,int b,int num){
 		for(int i=0;i<5;i++)
 			for(int j=0;j<5;j++)
 				blockS[i][j] = block[i][j];
 		blockIndex = x;
 		placeScore = b*10;
+		blocknum = num;
 	}
 
 	void print(){
@@ -59,7 +60,7 @@ public:
 
 private:
 	char blockS[5][5];
-	int placeScore, blockIndex;
+	int placeScore, blockIndex,blocknum;
 };
 
 class Board{
