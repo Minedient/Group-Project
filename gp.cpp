@@ -13,7 +13,7 @@ int boardSize = 10, tBombCount = 9;
 void blockBoard();
 bool exit(char[]);
 void credit();
-void blockCharC(char);
+void blockCharC();
 void startGame();
 void settingsMenu();
 
@@ -157,8 +157,35 @@ void credit(){
 }
 
 //Change the char of the blocks
-void blockCharC(char x){
-	blockChar = x;
+void blockCharC(){
+	int loopCheck = 0;
+	char charChoice;
+	
+	while(loopCheck == 0){
+		cout << "*** Block Character Selection ***" << endl;
+		cout << "[1] X" << endl;
+		cout << "[2] O" << endl;
+		cout << "[3] @" << endl;
+		cout << "[4] #" << endl;
+		cout << "*****************" << endl;
+		cout << "Option (1-4): ";
+		cin >> charChoice;
+		
+		loopCheck = 1;
+		switch(charChoice){
+			case '1': blockChar = 'X'; break;
+			case '2': blockChar = 'O'; break;
+			case '3': blockChar = '@'; break;
+			case '4': blockChar = '#'; break;
+			default: cout << "Please enter choice 1 - 4 only." << endl;
+				loopCheck = 0;
+		}
+		
+		if (loopCheck != 0) cout << "Block Character has been changed.";
+		
+		system("pause");
+		system("cls");
+	}
 }
 
 //Start the Game <-- Will be modified later <--Cosmetics chessboard
@@ -235,7 +262,7 @@ void settingsMenu(){
 		case '2': /*Timer Bomb toggle*/ ; continue;
 		case '3': /*Board Size option*/ ; continue;
 		case '4': /*Bomb Timer option*/ ; continue;
-		case '5': /*Block Character option*/ ; continue;
+		case '5': blockCharC(); continue;
 		case '6': if(exit(settingsMenuExit) == true) setExit = 1;
 			continue;
 		default:
