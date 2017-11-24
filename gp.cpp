@@ -53,13 +53,18 @@ public:
 			for(int j=0;j<5;j++){
 				cout << blockS[i][j];
 			}
+			if(i==0){
+				cout << "---" << blocknum;
+			}
 			cout << endl;
 		}
+
 	}
 	
 	//check if a block unit at (i, j) exists
+	//Return 1 if that block is blockChar, else return 0 <-- Do this first, change when to time bomb mode
 	bool blockExist(int i, int j){
-		return (blockS[i][j] == ' ') ? 0 : 1;
+		return (blockS[i][j] == blockChar) ? 1 : 0;
 	}
 	
 	//records the size of the block
@@ -83,6 +88,14 @@ public:
 			}
 		}
 	}
+	
+	int getplaceScore(){
+		return placeScore;
+	}
+
+	int getblockIndex(){
+		return blockIndex;
+	}
 
 private:
 	char blockS[5][5];
@@ -105,9 +118,9 @@ public:
 
 	//Update the chessboard from Real Game Board to Show Board
 	void update(){
-		for(int i=3;i<boardSize+3-2;i++){
-			for(int j=3;j<boardSize+3-2;j++){
-				boardSpace[i][j] = realboard[i][j];
+		for(int i=2;i<boardSize+3-1;i++){
+			for(int j=2;j<boardSize+3-1;j++){
+				boardSpace[i][j] = realboard[i-2][j-2];
 			}
 		}
 	}
@@ -136,10 +149,10 @@ public:
 	void putBlock(Block x, int col,int row){
 		for (int i = 0; i < 5; i++){
 			for (int j = 0; j < 5; j++){
-				if (x.blockExist(i, j) == 0){
-					realboard[i+row][j+col] = blockChar;
-				}
-				else continue;
+				if (x.blockExist(i, j) == 1){
+					cout << (char)(i+col+65) << j+row << endl;
+					realboard[i+col][j+row] = blockChar;
+				}else continue;
 			}
 		}
 	}
@@ -342,7 +355,7 @@ void startGame(){
 	int blockchoice;
 	Block thisBlock;
 	char location[3];
-	bool ischoice,isdecodable, isValid;
+	bool ischoice,isdecodable, isValid ,isPlaceable = true;
 	bool e;
 
 	srand(time(0));
@@ -354,49 +367,75 @@ void startGame(){
 	Block c = genBlock(2);
 	Board board;
 
-	//Print score board and blocks
-	cout << "Your score are " + playerScore << endl;
-	board.print();
-	cout << "---------------" << endl;
-	a.print();
-	b.print();
-	c.print();
+	while(isPlaceable==true){
+		//Print score board and blocks
 
-	//Ask user for block choice
-	cout << "Which block you want to place? (0,1,2)" << endl;
+		board.print();
+		cout << "---------------" << endl;
+		a.print();
+		cout << "---------------" << endl;
+		b.print();
+		cout << "---------------" << endl;
+		c.print();
+		cout << "---------------" << endl;
+		cout << "Your score are " << playerScore << endl;
 
-	ischoice = false;
-	while(ischoice == false){
-		cin >> blockchoice;
-		switch(blockchoice){
-		case 0: thisBlock = a;ischoice = true;break;
-		case 1:	thisBlock = b;ischoice = true;break;
-		case 2:	thisBlock = c;ischoice = true;break;
-		default:cout << "Please enter a number from 0-2" << endl;break;
+		//Check if can't place any block
+		/*
+		for(int i=0;i<boardSize;i++){
+			for(int j=0;j<boardSize;j++){
+				if(board.blockLocCheck(a,i,j)==true||board.blockLocCheck(b,i,j)==true||board.blockLocCheck(c,i,j)==true){
+					isPlaceable = false;
+					cout << "You can't put any more blocks, You have lose. And your score is " << playerScore << endl;
+					system("pause");
+					return;
+				}
+			}
 		}
+		*/
+
+		//Ask user for block choice
+		cout << "Which block you want to place? (0,1,2)" << endl;
+
+		ischoice = false;
+		while(ischoice == false){
+			cin >> blockchoice;
+			switch(blockchoice){
+			//Also create a new block for player to choose
+			case 0: thisBlock = a;ischoice = true;a = genBlock(0);break;
+			case 1:	thisBlock = b;ischoice = true;b = genBlock(1);break;
+			case 2:	thisBlock = c;ischoice = true;c = genBlock(2);break;
+			default:cout << "Please enter a number from 0-2" << endl;break;
+			}
+		}
+
+		isdecodable = false;
+		isValid = 0;
+		while(isdecodable == false || isValid == 0){
+			cout << "Which location you want to place the block? For example:A0" << endl;
+			cin >> location;
+			e = locationD(location);
+			if(e==true){
+				cout << "Please input a valid command! For example: A0" << endl;
+			}
+			else if (board.blockLocCheck(thisBlock,location[0]-'0',location[1]-'0') == 0){
+				cout << "The block cannot fit into the location! Try again." << endl;
+			}
+			else{
+				isdecodable = true;
+				isValid = 1;
+			}
+		}
+
+
+		//Time to place block
+		board.putBlock(thisBlock,location[0]-'0',location[1]-'0');
+		playerScore += thisBlock.getplaceScore();
+		board.update();
+		//debug use
+		system("pause");
+		system("cls");
 	}
-
-	isdecodable = false;
-	isValid = 0;
-	while(isdecodable == false || isValid == 0){
-		cout << "Which location you want to place the block? For example:A0" << endl;
-		cin >> location;
-		e = locationD(location);
-		if(e==true){
-			cout << "Please input a valid command! For example: A0" << endl;
-		}
-		else if (board.blockLocCheck(thisBlock,location[0]-'0',location[1]-'0') == 0){
-			cout << "The block cannot fit into the location! Try again." << endl;
-		}
-		else{
-			isdecodable = true;
-			isValid = 1;
-		}
-	}
-	
-	
-	//Time to place block
-	board.putBlock(thisBlock,location[0]-'0',location[1]-'0');
 
 	system("pause");
 }
@@ -473,7 +512,7 @@ Block genBlock(int x){
 }
 
 //This is the block placement location decoder, which turn A2 to two int like (1,3) and use by putBlock(....)
-bool locationD(char input[]){
+bool locationD(char *input){
 
 	char first = input[0];
 	char second = input[1];
