@@ -26,3 +26,5 @@
 25/11/2017:
      00:28  Added some functions to the startGame which now can show blocks and choose blocks.
      02:09  Added location validity check
+     04:13  DEBUG: Can't place block, the board is not updating
+     .....  Updated startGame, the game can play now, but very buggy, validity check still need to be improved
