@@ -138,6 +138,7 @@ bool locationD(char[]);
 
 int main()
 {
+	srand(time(0)); //Init the RNG
 	char choice;
 	char mainmenuExit[40] = "Do you really wish to exit?";
 	/*
@@ -249,12 +250,58 @@ void blockCharC(){
 //Start the Game <-- Will be modified later <--Cosmetics chessboard
 void startGame(){
 	
+	int playerScore = 0;
+	int blockchoice;
+	Block thisBlock;
+	char location[3];
+	bool ischoice,isdecodable;
+	bool e;
+
+	srand(time(0));
 	system("cls");
 
+	//Generate blocks and board
+	Block a = genBlock(0);
+	Block b = genBlock(1);
+	Block c = genBlock(2);
 	Board board;
-	board.print();
 
-	
+	//Print score board and blocks
+	cout << "Your score are " + playerScore << endl;
+	board.print();
+	cout << "---------------" << endl;
+	a.print();
+	b.print();
+	c.print();
+
+	//Ask user for block choice
+	cout << "Which block you want to place? (0,1,2)" << endl;
+
+	ischoice = false;
+	while(ischoice == false){
+		cin >> blockchoice;
+		switch(blockchoice){
+		case 0: thisBlock = a;ischoice = true;break;
+		case 1:	thisBlock = b;ischoice = true;break;
+		case 2:	thisBlock = c;ischoice = true;break;
+		default:cout << "Please enter a number from 0-2" << endl;break;
+		}
+	}
+
+	isdecodable = false;
+	while(isdecodable == false){
+		cout << "Which location you want to place the block? For example:A0" << endl;
+		cin >> location;
+		e = locationD(location);
+		if(e==true){
+			cout << "Please input a valid command! For example: A0";
+		}else{
+			isdecodable = true;
+		}
+	}
+	//Time to place block
+	board.putBlock(thisBlock,location[0]-'A',location[1]-'0');
+
 	system("pause");
 }
 
@@ -339,3 +386,69 @@ void settingsMenu(){
 		system("cls");
 	};
 }
+
+
+Block genBlock(int x){
+
+	int choice = 1 + (rand() % 19);
+
+	switch(choice){
+	case 1: return Block(h1,choice,1,x);
+	case 2: return Block(h2,choice,2,x);
+	case 3: return Block(h3,choice,3,x);
+	case 4: return Block(h4,choice,4,x);
+	case 5: return Block(h5,choice,5,x);
+	case 6: return Block(v2,choice,2,x);
+	case 7: return Block(v3,choice,3,x);
+	case 8: return Block(v4,choice,4,x);
+	case 9: return Block(v5,choice,5,x);
+	case 10: return Block(L11,choice,3,x);
+	case 11: return Block(L12,choice,3,x);
+	case 12: return Block(L13,choice,3,x);
+	case 13: return Block(L14,choice,3,x);
+	case 14: return Block(L21,choice,5,x);
+	case 15: return Block(L22,choice,5,x);
+	case 16: return Block(L23,choice,5,x);
+	case 17: return Block(L24,choice,5,x);
+	case 18: return Block(s1,choice,4,x);
+	case 19: return Block(s2,choice,9,x);
+	}
+
+}
+
+bool locationD(char input[]){
+
+	char first = input[0];
+	char second = input[1];
+
+	switch(first){
+	case 'A': input[0] = '0';break;
+	case 'B': input[0] = '1';break;
+	case 'C': input[0] = '2';break;
+	case 'D': input[0] = '3';break;
+	case 'E': input[0] = '4';break;
+	case 'F': input[0] = '5';break;
+	case 'G': input[0] = '6';break;
+	case 'H': input[0] = '7';break;
+	case 'I': input[0] = '8';break;
+	case 'J': input[0] = '9';break;
+	default: return true;
+	}
+
+	switch(second){
+	case '0':break;
+	case '1':break;
+	case '2':break;
+	case '3':break;
+	case '4':break;
+	case '5':break;
+	case '6':break;
+	case '7':break;
+	case '8':break;
+	case '9':break;
+	default: return true;
+		}
+
+	return false;
+}
+
