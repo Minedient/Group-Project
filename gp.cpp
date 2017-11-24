@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <cmath>
 #include <stdlib.h>
+#include <ctime>
 using namespace std;
 
 bool tBombOn = 0, pcDemoOn = 0;
