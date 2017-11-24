@@ -421,6 +421,7 @@ Block genBlock(int x){
 
 }
 
+//This is the block placement location decoder, which turn A2 to two int like (1,3) and use by putBlock(....)
 bool locationD(char input[]){
 
 	char first = input[0];
