@@ -148,7 +148,7 @@ void credit(){
 	//clear the screen first
 	system("cls");
 	cout << "Leung Ho HIN  16187002A 103A" << endl;
-	cout << "Leung Ka Ming 16091968A 103A" << endl;
+	cout << "Leung Ka MING 16091968A 103A" << endl;
 	cout << "MAK HOI KIT   16027276A 103C" << endl;
 	cout << "SARKI JOSHAN  16......A 103B" << endl;
 	
