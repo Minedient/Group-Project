@@ -170,6 +170,7 @@ void credit();
 void blockCharC();
 void startGame();
 void settingsMenu();
+void instruction();
 Block genBlock(int);
 bool locationD(char[]);
 
@@ -201,7 +202,7 @@ int main()
 		switch (choice){
 		case '1': startGame() ; break;
 		case '2': system("cls");settingsMenu(); break;
-		case '3': /*P3 here*/ ; break;
+		case '3': instruction(); break;
 		case '4': credit() ; break;
 		case '5': if(exit(mainmenuExit) == true)
 					return 0;
@@ -243,10 +244,20 @@ bool exit(char msg[]){
 void credit(){
 	//clear the screen first
 	system("cls");
+	cout << "~~~~~~~~~Credit Page~~~~~~~~~~" << endl;
 	cout << "Leung Ho HIN  16187002A 103A" << endl;
 	cout << "Leung Ka MING 16091968A 103A" << endl;
 	cout << "MAK HOI KIT   16027276A 103C" << endl;
 	cout << "SARKI JOSHAN  1698910AA 103B" << endl;
+	
+	cout << "  _______ _                 _           __                   _             _             " << endl;
+	cout << " |__   __| |               | |         / _|                 | |           (_)            " << endl;
+	cout << "    | |  | |__   __ _ _ __ | | _____  | |_ ___  _ __   _ __ | | __ _ _   _ _ _ __   __ _ " << endl;
+	cout << "    | |  | '_ \ / _` | '_ \| |/ / __| |  _/ _ \| '__| | '_ \| |/ _` | | | | | '_ \ / _` |" << endl;
+	cout << "    | |  | | | | (_| | | | |   <\__ \ | || (_) | |    | |_) | | (_| | |_| | | | | | (_| |" << endl;
+	cout << "    |_|  |_| |_|\__,_|_| |_|_|\_\___/ |_| \___/|_|    | .__/|_|\__,_|\__, |_|_| |_|\__, |" << endl;
+	cout << "                                                      | |             __/ |         __/ |" << endl;
+	cout << "                                                      |_|            |___/         |___/ " << endl;
 	
 	system("pause");
 
@@ -385,6 +396,11 @@ void settingsMenu(){
 		//Clear Screen
 		system("cls");
 	};
+}
+
+//Gmae instruction
+void instruction(){
+	
 }
 
 //Generate block for creating the list for user to choose
