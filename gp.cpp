@@ -226,6 +226,13 @@ void startGame(){
 		}
 
 	}
+	
+`	//Update code-can be used to update the content from realboard to this board
+	for(int i = 2; i < boardSize + 2; i++){
+		for (int j = 2; j < boardSize + 2; j++){
+			greaterboard[i][j] = real.boardSpace[i-2][j-2];
+		}
+	}
 
 	//Show the board
 	for(int i=0;i<gboardSize;i++){
