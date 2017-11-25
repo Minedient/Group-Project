@@ -480,6 +480,19 @@ void settingsMenu(){
 	};
 }
 
+int Changethetimer() {
+	int newV;
+	cout << "What is the value of the bomb you want to change? (6-9)";
+	cin >> newV;
+	switch (newV) {
+	case 6: return 6;
+	case 7: return 7;
+	case 8: return 8;
+	case 9: return 9;
+	default: cout << "Only type in 6-9";
+		cin >> newV;
+	}
+}
 //Gmae instruction
 void instruction(){
 	
