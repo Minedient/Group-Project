@@ -30,15 +30,17 @@ char s1[5][5] = {{blockChar, blockChar}, {blockChar, blockChar}};
 char s2[5][5] = {{blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}};
 
 int choice;
+int choice;
 bool boardsizeChange() {
 	cout << "What Size do you want to change to?" << endl;
 	cout << "1: 5x5          2: 7x7          3: 10x10";
 	cin >> choice;
-	if (choice == (1 || 2)) {
-	cout << "The board size has been changed sucessfully!";
-	return true;
-}
-	else return false;
+	switch (choice) {
+	case 1: return true; cout << "The board size has been changed sucessfully!" << endl; break;
+	case 2: return true; cout << "The board size has been changed sucessfully!" << endl; break;
+	case 3: return false; break;
+	default: cout << "Only type in 1 to 3! Input again: "; cin >> choice;
+	}
 }
 int sizechange() {
 	if (choice == 1)
