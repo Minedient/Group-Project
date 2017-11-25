@@ -71,7 +71,7 @@ public:
 
 	//records the position of the leftmost block
 	void blockLeftPos(int * h){
-		for (int n; n < 5; n++){
+		for (int n = 0; n < 5; n++){
 			if (blockExist(0, n) == 1){
 				*h = n;
 				//cout << "left" << *h << endl; //debug
