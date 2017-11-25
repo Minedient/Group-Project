@@ -29,6 +29,23 @@ char L24[5][5] = {{blockChar, blockChar, blockChar}, {' ', ' ', blockChar}, {' '
 char s1[5][5] = {{blockChar, blockChar}, {blockChar, blockChar}};
 char s2[5][5] = {{blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}, {blockChar, blockChar, blockChar}};
 
+int choice;
+bool boardsizeChange() {
+	cout << "What Size do you want to change to?" << endl;
+	cout << "1: 5x5          2: 7x7          3: 10x10";
+	cin >> choice;
+	if (choice == (1 || 2))
+		return true;
+	else return false;
+}
+int sizechange() {
+	if (choice == 1)
+		return 5;
+	if (choice == 2)
+		return 7;
+}
+
+
 class Block
 {
 public:
@@ -104,112 +121,86 @@ private:
 
 class Board{
 
-public:
-
-	//print the big chessboard
-	void print(){
-		for(int i=0;i<13;i++){
-				for(int j=0;j<13;j++){
-					cout << boardSpace[i][j];
-				}
-				cout << endl;
-			}
-	}
-
-	//Update the chessboard from Real Game Board to Show Board
-	void update(){
-		for(int i=2;i<boardSize+3-1;i++){
-			for(int j=2;j<boardSize+3-1;j++){
-				boardSpace[i][j] = realboard[i-2][j-2];
-			}
-		}
-	}
-	
-	
-	//Some game logic appear in this function, becare.
-	//Check if the location is valid for the block to be placed; returns 0 if not, and 1 if yes
-	bool blockLocCheck(Block x, int col, int row){
-		int blockH, blockW, blockL;
-		x.blockSize(blockH, blockW);
-		x.blockLeftPos(blockL);
-		col -= blockL;
-		for (int i = 0; i < blockW; i++){
-			for (int j = 0; j < blockH; j++){
-				//conditions: will a block be placed? is the space already occupied? is the block beyond the board?
-				if (x.blockExist(i, j) == 1 && (realboard[i+col][j+row] == blockChar || i+col > boardSize || j+row > boardSize || i+col < 0 || j+col < 0)){
-					return 0;
-				}
-				else continue;
-			}
-		}
-		return 1;
-	}
-	
-	//Function to put block on board (col in A-F row in 0-9)
-	void putBlock(Block x, int col,int row){
-		for (int i = 0; i < 5; i++){
-			for (int j = 0; j < 5; j++){
-				if (x.blockExist(i, j) == 1){
-					cout << (char)(i+col+65) << j+row << endl;
-					realboard[i+col][j+row] = blockChar;
-				}else continue;
-			}
-		}
-	}
-	//Checks if no more blocks can be placed; If so, returns 1; if not, returns 0
-	bool gameOver(Block x){
-		for (int i = 0; i < boardSize; i++){
-			for (int j = 0; j < boardSize; j++){
-				if (blockLocCheck(x, i, j) == 1){
-					return 0;
-				}
-				else continue;
-			}
-			
-		}
-		return 1;
-	}
-	
-	
-	//Construtor
-	Board(){
+Board() {
+		if (boardsizeChange() == false){
 		//Create a clean 13*13 board
-		for (int i = 0; i < 13; i++){
-				for (int j = 0; j < 13; j++){
-					boardSpace[i][j] = ' ';
-				}
+		for (int i = 0; i < 13; i++) {
+			for (int j = 0; j < 13; j++) {
+				boardSpace[i][j] = ' ';
 			}
+		}
 
 		//Create a clean varSize board(Real Game Board)
 
-		for (int i = 0; i < boardSize; i++){
-			for (int j = 0; j < boardSize; j++){
+		for (int i = 0; i < boardSize; i++) {
+			for (int j = 0; j < boardSize; j++) {
 				realboard[i][j] = ' ';
 			}
 		}
 
 		//generate size sensitive top
-		for(int i=2;i<boardSize+3-1;i++){
-			boardSpace[0][i] = 48+i-2;
+		for (int i = 2; i<boardSize + 3 - 1; i++) {
+			boardSpace[0][i] = 48 + i - 2;
 		}
 
 		//generate size sensitive side
-		for(int i=2;i<boardSize+3-1;i++){
-			boardSpace[i][0] = 65+i-2;
+		for (int i = 2; i<boardSize + 3 - 1; i++) {
+			boardSpace[i][0] = 65 + i - 2;
 		}
 
 		//Generate the outline of the board
-		for(int i=0;i<boardSize+3;i++){
-			for(int j=0;j<boardSize+3;j++){
-				if((i==1||i==boardSize+3-1) && j>=1)
+		for (int i = 0; i<boardSize + 3; i++) {
+			for (int j = 0; j<boardSize + 3; j++) {
+				if ((i == 1 || i == boardSize + 3 - 1) && j >= 1)
 					boardSpace[i][j] = '@';
-				if(i!=0){
-					if(j==1 || j== boardSize+3-1)
+				if (i != 0) {
+					if (j == 1 || j == boardSize + 3 - 1)
 						boardSpace[i][j] = '-';
+				}
+			
 				}
 			}
 
 		}
+		else {
+		for (int i = 0; i < sizechange() +3; i++) {
+			for (int j = 0; j < sizechange() + 3; j++) {
+				boardSpace[i][j] = ' ';
+			}
+		}
+
+		//Create a clean varSize board(Real Game Board)
+
+		for (int i = 0; i < sizechange(); i++) {
+			for (int j = 0; j < sizechange(); j++) {
+				realboard[i][j] = ' ';
+			}
+		}
+
+		//generate size sensitive top
+		for (int i = 2; i<sizechange() + 3 - 1; i++) {
+			boardSpace[0][i] = 48 + i - 2;
+		}
+
+		//generate size sensitive side
+		for (int i = 2; i<sizechange() + 3 - 1; i++) {
+			boardSpace[i][0] = 65 + i - 2;
+		}
+
+		//Generate the outline of the board
+		for (int i = 0; i<sizechange() + 3; i++) {
+			for (int j = 0; j<sizechange() + 3; j++) {
+				if ((i == 1 || i == sizechange() + 3 - 1) && j >= 1)
+					boardSpace[i][j] = '@';
+				if (i != 0) {
+					if (j == 1 || j == sizechange() + 3 - 1)
+						boardSpace[i][j] = '-';
+				}
+
+			}
+		}
+
+	}
 
 	}
 
