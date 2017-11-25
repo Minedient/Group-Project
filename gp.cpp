@@ -105,6 +105,67 @@ class Board{
 
 public:
 
+	//clear lines and register score addition by lineClear(playerScore)
+	    void lineClear(int * score){
+	        int lineTotal = 0;
+	        int colCheck[boardSize] = {}, rowCheck[boardSize] = {};
+
+	        //First loop
+	        for(int i=0;i<boardSize;i++){
+
+	        	//check if rol full
+	        	for(int j=0;j<boardSize;j++){
+
+	        		//immediately breaks if there are empty spaces in row
+	        		if(realboard[i][j] != blockChar)
+	        			break;
+
+	        		if(j == boardSize-1){
+	        			rowCheck[i] = 1;
+	        			lineTotal++;
+	        		}
+
+	        	}
+
+	        	for(int k=0;k<boardSize;k++){
+
+	        		//immediately breaks if there are empty spaces in col
+	        		if(realboard[k][i] != blockChar)
+	        			break;
+
+	        		if(k == boardSize-1){
+	        			colCheck[i] = 1;
+	        			lineTotal++;
+	        		}
+
+	        	}
+
+	        }
+
+	        //clear out full columns/rows
+	        for (int q = 0; q < boardSize; q++){
+
+	        	cout << rowCheck[q] << " " << colCheck[q] << endl;
+
+	        	if (rowCheck[q] == 1){
+	        	    for (int i = 0; i < boardSize; i++){
+	        	        realboard[q][i] = ' ';
+	        	    }
+	        	}
+	        	if (colCheck[q] == 1){
+	        	    for (int i = 0; i < boardSize; i++){
+	        	         realboard[i][q] = ' ';
+	        	    }
+	        	}
+	        }
+
+	        //add score from line clears
+	        for (int s = 1; s <= lineTotal; s++){
+	        	            *score += s*100;
+	        	        }
+
+	    }
+
 	//Problematic
 	bool gameOver(Block x){
 		for (int i = 0; i < boardSize-1; i++){
@@ -122,7 +183,7 @@ public:
 		int blockL = 0;
 		x.blockLeftPos(&blockL);
 		row -= blockL;
-		cout << "block left " << row << endl; //debug
+		//cout << "block left " << row << endl; //debug
 		for (int i = 0; i < 5; i++){
 			for (int j = 0; j < 5; j++){
 				if (x.blockExist(i, j) == 1){
@@ -139,11 +200,11 @@ public:
 		blockH = x.getblockH();
 		blockW = x.getblockW();
 		x.blockLeftPos(&blockL);
-		cout << blockL << endl;
+		//cout << blockL << endl;
 		row -= blockL;
 		for (int i = 0; i < blockH; i++){
 			for (int j = 0; j < blockW; j++){
-				cout << (char)(i+col+65) << j+row << "  " << x.blockExist(i,j) << "  " << realboard[i+col][j+row] << endl; //Just don't delete it for now
+				//cout << (char)(i+col+65) << j+row << "  " << x.blockExist(i,j) << "  " << realboard[i+col][j+row] << endl; //Just don't delete it for now
 				//conditions: will a block be placed? is the space already occupied? is the block beyond the board?
 				if (x.blockExist(i, j) == 1 && (realboard[i+col][j+row] == blockChar || i+col > boardSize-1 || j+row > boardSize-1 || i+col < 0 || j+row < 0)){
 				return 0;
@@ -371,7 +432,7 @@ void startGame(){
 	int blockchoice;
 	Block thisBlock;
 	char location[3];
-	bool ischoice,isdecodable, isValid ,isPlaceable = true, isfinishBlock = false;
+	bool ischoice,isdecodable, isValid, isfinishBlock = false;
 	bool e;
 
 	srand(time(0));
@@ -383,13 +444,7 @@ void startGame(){
 	Block c = genBlock(2);
 	Board board;
 
-	while(isPlaceable==true){
-		if (board.gameOver(a) == 1 && board.gameOver(b) == 1 && board.gameOver(c) == 1){
-			cout << "Game Over" << endl;
-			cout << "Final Score: " << playerScore << endl;
-			system("pause");
-			break;
-		}
+	while(1){
 
 		//Print score board and blocks
 
@@ -406,19 +461,11 @@ void startGame(){
 		board.printR();
 		cout << "---------------" << endl;
 
-		//Check if can't place any block
-		/*
-		for(int i=0;i<boardSize;i++){
-			for(int j=0;j<boardSize;j++){
-				if(board.blockLocCheck(a,i,j)==true||board.blockLocCheck(b,i,j)==true||board.blockLocCheck(c,i,j)==true){
-					isPlaceable = false;
-					cout << "You can't put any more blocks, You have lose. And your score is " << playerScore << endl;
-					system("pause");
-					return;
+		if (board.gameOver(a) == 1 && board.gameOver(b) == 1 && board.gameOver(c) == 1){
+					cout << "Game Over" << endl;
+					cout << "Final Score: " << playerScore << endl;
+					break;
 				}
-			}
-		}
-		*/
 
 		isfinishBlock = false;
 				while(isfinishBlock == false){
@@ -472,6 +519,7 @@ void startGame(){
 
 		//Time to place block
 		board.putBlock(thisBlock,location[0]-'0',location[1]-'0');
+		board.lineClear(&playerScore);
 		playerScore += thisBlock.getplaceScore();
 		board.update();
 		//debug use
