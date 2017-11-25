@@ -302,14 +302,13 @@ private:
 //Declare function
 bool exit(char[]);
 void credit();
-void blockCharC();
 void startGame();
 void settingsMenu();
 void instruction();
 Block genBlock(int);
 bool locationD(char[]);
-bool boardsizeChange();
-void sizechange();
+void sizeChange();
+void soonTM();
 
 int main()
 {
@@ -324,7 +323,6 @@ int main()
 
 	//The main loop of the game, only break out when user want to exit
 	while(1){
-		cout << endl;
 		cout << "Blockblazer - Clear The Blocks!\n" << endl;
 		cout << "*** Game Menu ***" << endl;
 		cout << "[1] Start Game" << endl;
@@ -351,6 +349,7 @@ int main()
 		}
 		//Clear Screen
 		system("cls");
+		cout << endl;
 	};
 }
 
@@ -402,38 +401,6 @@ void credit(){
 
 }
 
-//Change the char of the blocks
-void blockCharC(){
-	int loopCheck = 0;
-	char charChoice;
-
-	while(loopCheck == 0){
-		cout << "*** Block Character Selection ***" << endl;
-		cout << "[1] X" << endl;
-		cout << "[2] O" << endl;
-		cout << "[3] @" << endl;
-		cout << "[4] #" << endl;
-		cout << "*****************" << endl;
-		cout << "Option (1-4): ";
-		cin >> charChoice;
-
-		loopCheck = 1;
-		switch(charChoice){
-			case '1': blockChar = 'X'; break;
-			case '2': blockChar = 'O'; break;
-			case '3': blockChar = '@'; break;
-			case '4': blockChar = '#'; break;
-			default: cout << "Please enter choice 1 - 4 only." << endl;
-				loopCheck = 0;
-		}
-
-		if (loopCheck != 0) cout << "Block Character has been changed.";
-
-		system("pause");
-		system("cls");
-	}
-}
-
 //Start the Game <-- Will be modified later <--Cosmetics chessboard
 void startGame(){
 
@@ -465,7 +432,7 @@ void startGame(){
 		cout << "---------------" << endl;
 		c.print();
 		cout << "---------------" << endl;
-		cout << "Your score are " << playerScore << endl;
+		cout << "Your score is currently " << playerScore << endl;
 		cout << "---------------" << endl;
 
 		//When no more blocks can be put
@@ -478,16 +445,18 @@ void startGame(){
 		isfinishBlock = false;
 				while(isfinishBlock == false){
 				//Ask user for block choice
-					cout << "Which block you want to place? (0,1,2)" << endl;
+					cout << "Which block do you want to place? (0,1,2)" << endl;
+					cout << "You can also input Q to exit." << endl;
 
 					ischoice = false;
 					while(ischoice == false){
 						cin >> blockchoice;
 						switch(blockchoice){
 						//Also create a new block for player to choose
+						case 'Q': if(exit("Do you wish to exit the game?") == true) isExit = 1; ischoice = true; break;
 						case '0': thisBlock = a;ischoice = true;a = genBlock(0);break;
-						case '1':	thisBlock = b;ischoice = true;b = genBlock(1);break;
-						case '2':	thisBlock = c;ischoice = true;c = genBlock(2);break;
+						case '1': thisBlock = b;ischoice = true;b = genBlock(1);break;
+						case '2': thisBlock = c;ischoice = true;c = genBlock(2);break;
 						default:cout << "Please enter a number from 0-2" << endl;break;
 						}
 					}
@@ -558,26 +527,24 @@ void settingsMenu(){
 
 	while(setExit == 0){
 		cout << "\n*** Settings Menu ***" << endl;
-		cout << "[1] PC Game Demo - Out of service" << endl;
-		cout << "[2] Timer Bomb Mode - Out of service" << endl;
+		cout << "[1] PC Game Demo" << endl;
+		cout << "[2] Timer Bomb Mode" << endl;
 		cout << "[3] Change Board Size" << endl;
-		cout << "[4] Change Bomb Timer - Out of service" << endl;
-		cout << "[5] Change Block Character" << endl;
-		cout << "[6] Return to Game Menu" << endl;
+		cout << "[4] Change Bomb Timer" << endl;
+		cout << "[5] Return to Game Menu" << endl;
 		cout << "*****************" << endl;
-		cout << "Option (1-6): ";
+		cout << "Option (1-5): ";
 		cin >> choice;
 
 		switch (choice){
-		case 1: /*PC Demo toggle*/ ; continue;
-		case 2: /*Timer Bomb toggle*/ ; continue;
-		case 3: boardsizeChange() ; continue;
-		case 4: /*Bomb Timer option*/ ; continue;
-		case 5: blockCharC(); continue;
-		case 6: if(exit(settingsMenuExit) == true) setExit = 1;
+		case 1: soonTM(); continue;
+		case 2: soonTM(); continue;
+		case 3: sizeChange(); continue;
+		case 4: soonTM(); continue;
+		case 5: if(exit(settingsMenuExit) == true) setExit = 1;
 			continue;
 		default:
-			cout << "Please enter choice 1 - 6 only." << endl;
+			cout << "Please enter choice 1 - 5 only." << endl;
 			break;
 
 		}
@@ -607,7 +574,7 @@ void instruction(){
 	cout << "There are three ramdomly-generated block.(select index 0 to 2).You are about to choose to place.  Format should be:\n";
 	cout << "Forming with a row letter and a column number togther.\n";
 	cout << "Example: A0     It indicates where the \"X\" in the upper left corner of the block is placed. \n\n";
-	cout << "Note that the block should be placed inside the board and should not overlap with other blocks and should not overlap with bombs under game mode (2).\n\n";
+	cout << "Note that the block should be placed inside the board and should not overlap with other blocks.\n\n";
 	system("pause");
 }
 
@@ -677,17 +644,25 @@ bool locationD(char *input){
 	return false;
 }
 
-bool boardsizeChange() {
-
+//changes boardSize
+void sizeChange() {
 	int choice;
-
-	cout << "What Size do you want to change to?" << endl;
-	cout << "1: 5x5          2: 7x7          3: 10x10";
-	cin >> choice;
-	switch (choice) {
-	case 1: return true; cout << "The board size has been changed sucessfully!" << endl; break;
-	case 2: return true; cout << "The board size has been changed sucessfully!" << endl; break;
-	case 3: return false; break;
-	default: cout << "Only type in 1 to 3! Input again: "; cin >> choice;
+	while(1){
+		cout << "What size do you want board to be?" << endl;
+		cout << "Please input a number between 7 and 10.";
+		cin >> choice;
+		if (choice >= 7 && choice <= 10){
+			boardSize = choice;
+			cout << "The board size has been changed sucessfully." << endl;
+			break;
+		}
+		else{
+			cout << "Input out of range. ";
+		}
 	}
+}
+
+//this is what happens when you combine feature creep with multiple person coding at the same time
+void soonTM(){
+	cout << "This feature has not been implemented yet." << endl;
 }
