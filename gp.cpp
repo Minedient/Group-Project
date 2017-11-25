@@ -74,7 +74,7 @@ public:
 		for (int n; n < 5; n++){
 			if (blockExist(0, n) == 1){
 				*h = n;
-				cout << "left" << *h << endl; //debug
+				//cout << "left" << *h << endl; //debug
 				break;
 			}
 		}
@@ -145,17 +145,26 @@ public:
 	        //clear out full columns/rows
 	        for (int q = 0; q < boardSize; q++){
 
-	        	cout << rowCheck[q] << " " << colCheck[q] << endl;
+	        	//cout << rowCheck[q] << " " << colCheck[q] << endl;
 
 	        	if (rowCheck[q] == 1){
 	        	    for (int i = 0; i < boardSize; i++){
 	        	        realboard[q][i] = ' ';
 	        	    }
+	        	system("pause");
+	        	this->update();
+	        	system("cls");
+	        	this->print();
 	        	}
+
 	        	if (colCheck[q] == 1){
 	        	    for (int i = 0; i < boardSize; i++){
 	        	         realboard[i][q] = ' ';
 	        	    }
+	        	    system("pause");
+	        	    this->update();
+	        	    system("cls");
+	        	    this->print();
 	        	}
 	        }
 
@@ -429,10 +438,10 @@ void blockCharC(){
 void startGame(){
 
 	int playerScore = 0;
-	int blockchoice;
+	char blockchoice;
 	Block thisBlock;
 	char location[3];
-	bool ischoice,isdecodable, isValid, isfinishBlock = false;
+	bool ischoice,isdecodable, isValid, isExit = 0, isfinishBlock = false;
 	bool e;
 
 	srand(time(0));
@@ -458,9 +467,8 @@ void startGame(){
 		cout << "---------------" << endl;
 		cout << "Your score are " << playerScore << endl;
 		cout << "---------------" << endl;
-		board.printR();
-		cout << "---------------" << endl;
 
+		//When no more blocks can be put
 		if (board.gameOver(a) == 1 && board.gameOver(b) == 1 && board.gameOver(c) == 1){
 					cout << "Game Over" << endl;
 					cout << "Final Score: " << playerScore << endl;
@@ -477,44 +485,55 @@ void startGame(){
 						cin >> blockchoice;
 						switch(blockchoice){
 						//Also create a new block for player to choose
-						case 0: thisBlock = a;ischoice = true;a = genBlock(0);break;
-						case 1:	thisBlock = b;ischoice = true;b = genBlock(1);break;
-						case 2:	thisBlock = c;ischoice = true;c = genBlock(2);break;
+						case '0': thisBlock = a;ischoice = true;a = genBlock(0);break;
+						case '1':	thisBlock = b;ischoice = true;b = genBlock(1);break;
+						case '2':	thisBlock = c;ischoice = true;c = genBlock(2);break;
 						default:cout << "Please enter a number from 0-2" << endl;break;
 						}
 					}
+					if (isExit == 1) break;
 
-					isdecodable = false;
-					isValid = 0;
-					while(isdecodable == false || isValid == 0){
-						cout << "Which location you want to place the block? For example:A0" << endl;
-						cout << "You are also deselect block by input NN" << endl;
-						cin >> location;
-						e = locationD(location);
-						if(location[0] == 'N' && location[1] == 'N'){
-							switch(blockchoice){
-							case 0:a = thisBlock;break;
-							case 1:b = thisBlock;break;
-							case 2:c = thisBlock;break;
-							}
-							ischoice = false;
-							location[0] = ' ';
-							location[1] = ' ';
-							break;
+					            isdecodable = false;
+					            isValid = 0;
+					            while(isdecodable == false || isValid == 0){
+					                cout << "Which location you want to place the block? For example: A0" << endl;
+					                cout << "You can also deselect block by inputing NN, and leave by inputting Q." << endl;
+					                cin >> location;
+					                e = locationD(location);
 
-						}else if(e==true){
-							cout << "Please input a valid command! For example: A0" << endl;
-						}
-						else if (board.blockLocCheck(thisBlock,location[0]-'0',location[1]-'0') == 0){
-							cout << "The block cannot fit into the location! Try again." << endl;
-						}
-						else{
-							isdecodable = true;
-							isValid = 1;
-							isfinishBlock = true;
-						}
-					}
-				}
+									if (location[0] == 'Q'){
+										if(exit("Do you wish to exit the game?") == true){
+											isExit = 1;
+											break;
+										}
+									}
+									else if(location[0] == 'N' && location[1] == 'N'){
+					                    switch(blockchoice){
+					                    case 0:a = thisBlock;break;
+					                    case 1:b = thisBlock;break;
+					                    case 2:c = thisBlock;break;
+					                    }
+					                    ischoice = false;
+					                    location[0] = {};
+										location[1] = {};
+					                    break;
+									}
+									else if(e==true){
+					                    cout << "Please input a valid command! For example: A0" << endl;
+					                }
+					                else if (board.blockLocCheck(thisBlock,location[0]-'0',location[1]-'0') == 0){
+					                    cout << "The block cannot fit into the location! Try again." << endl;
+					                }
+					                else{
+					                    isdecodable = true;
+					                    isValid = 1;
+					                    isfinishBlock = true;
+					                }
+					            }
+								if (isExit == 1) break;
+					        }
+
+							if (isExit == 1) break;
 
 
 		//Time to place block
@@ -580,7 +599,7 @@ int Changethetimer() {
 		cin >> newV;
 	}
 }
-//Gmae instruction
+//Game instruction
 void instruction(){
 	system("cls");
 	cout << "\n";
@@ -588,7 +607,6 @@ void instruction(){
 	cout << "There are three ramdomly-generated block.(select index 0 to 2).You are about to choose to place.  Format should be:\n";
 	cout << "Forming with a row letter and a column number togther.\n";
 	cout << "Example: A0     It indicates where the \"X\" in the upper left corner of the block is placed. \n\n";
-	cout << " For the \"reserved LShape \"block, where the leftmost\" X \"of the input position indicator block is placed.\n\n";
 	cout << "Note that the block should be placed inside the board and should not overlap with other blocks and should not overlap with bombs under game mode (2).\n\n";
 	system("pause");
 }
