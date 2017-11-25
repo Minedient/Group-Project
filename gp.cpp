@@ -558,11 +558,28 @@ void Instruction() {
 	system("cls");
 	cout << "\n";
 	cout << "INSTRUCTIONS \n\n";
-	cout << "There are three ramdomly-generated block.(select index 0 to 2).You are about to choose to place.  Format should be:\n";
-	cout << "Forming with a row letter and a column number togther.\n";
-	cout << "Example: A0     It indicates where the "X" in the upper left corner of the block is placed. \n\n";
-	cout << " For the "reserved LShape "block, where the leftmost" X "of the input position indicator block is placed.\n\n";
+	cout << "Blockblazer is a tile-matching game. Players must eliminate blocks by making lines without holes on the game board.\n";
+	cout << "Players earn score from placing different blocks and removing lines of blocks. More score is rewarded for removing lines simultaneouly.\n\n";
+	cout << "Out of 19 predefined blocks, there are three randomly selected for players to choose  .(select index 0 to 2).You are about to choose to place.  Format should be:\n";
+	cout << "		(row letter)(column number)		Example: A0\n\n";
+	cout << " It indicates where the \"X\" in the upper left corner of the block is placed. \n";
+	cout << " For the \"reserved LShape \"block, where the leftmost\" X \"of the input position indicator block is placed.\n\n";
 	cout << "Note that the block should be placed inside the board and should not overlap with other blocks and should not overlap with bombs under game mode (2).\n\n";
+	cout << "Players is awarded points from placing blocks. Different blocks have different points.\n\n";
+		
+	cout << "To clear a line, an entire line of row or column must be filled with no holes. A filled line will be removed from the board and score will be awarded.\n";
+	cout << "Remember, it is possible to remove more than 1 line simultaneously. The more lines players remove simultaneously, the more score players get!!\n\n\n"; 
+	
+	cout << "Extra gamemode and features: \n\n";
+	cout << "PC demo mode:  Instead of players playing, the computer will take over the control of the gameplay.\n";
+	cout << "Toggle PC demo mode on or off in settings.\n\n";
+	
+	cout << "Timer bomb mode:      For every five turns, one occupied block on the board will be randomly chosen to be the timer bomb, with the remaining number of count displaying in the block.\n";
+	cout << "Each turn lower the count by 1, until it reaches when it is \"Game over\". Remove that bomb before the counter reaches zero!!\n";
+    	cout << "Toggle timer bomber mode on or off in settings. Counter of the bomb can be set by players in settings.\n\n";
+    
+    	cout << "Board size:    The size of the board can be changed by user from 7x7 to 10x10. Default is 10x10.\n";
+    	cout << "Change board size in settings.";
 }
 
 //Generate block for creating the list for user to choose
