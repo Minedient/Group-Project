@@ -72,7 +72,7 @@ public:
 	//records the position of the leftmost block
 	void blockLeftPos(int * h){
 		for (int n = 0; n < 5; n++){
-			if (blockExist(n, 0) == 1){
+			if (blockExist(0, n) == 1){
 				*h = n;
 				//cout << "left" << *h << endl; //debug
 				break;
@@ -148,23 +148,27 @@ public:
 	        	//cout << rowCheck[q] << " " << colCheck[q] << endl;
 
 	        	if (rowCheck[q] == 1){
-	        	    for (int i = 0; i < boardSize; i++){
+	        	    	this->print();
+				
+				for (int i = 0; i < boardSize; i++){
 	        	        realboard[q][i] = ' ';
-	        	    }
-	        	system("pause");
-	        	this->update();
-	        	system("cls");
-	        	this->print();
+	        	    	}
+				
+	        		system("pause");
+	        		this->update();
+	        		system("cls");
 	        	}
 
 	        	if (colCheck[q] == 1){
-	        	    for (int i = 0; i < boardSize; i++){
+				this->print();
+				
+				for (int i = 0; i < boardSize; i++){
 	        	         realboard[i][q] = ' ';
-	        	    }
-	        	    system("pause");
-	        	    this->update();
-	        	    system("cls");
-	        	    this->print();
+	        	    	}
+				
+	        	    	system("pause");
+	        	    	this->update();
+	        	    	system("cls");
 	        	}
 	        }
 
