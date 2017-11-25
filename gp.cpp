@@ -125,7 +125,8 @@ private:
 
 class Board{
 
-Board() {
+public:
+	Board() {
 		if (boardsizeChange() == false){
 		//Create a clean 13*13 board
 		for (int i = 0; i < 13; i++) {
