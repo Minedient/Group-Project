@@ -558,10 +558,10 @@ void settingsMenu(){
 
 	while(setExit == 0){
 		cout << "\n*** Settings Menu ***" << endl;
-		cout << "[1] PC Game Demo" << endl;
-		cout << "[2] Timer Bomb Mode" << endl;
+		cout << "[1] PC Game Demo - Out of service" << endl;
+		cout << "[2] Timer Bomb Mode - Out of service" << endl;
 		cout << "[3] Change Board Size" << endl;
-		cout << "[4] Change Bomb Timer" << endl;
+		cout << "[4] Change Bomb Timer - Out of service" << endl;
 		cout << "[5] Change Block Character" << endl;
 		cout << "[6] Return to Game Menu" << endl;
 		cout << "*****************" << endl;
