@@ -554,7 +554,7 @@ int Changethetimer() {
 	}
 }
 //Gmae instruction
-void Instruction() {
+void instruction() {
 	system("cls");
 	cout << "\n";
 	cout << "INSTRUCTIONS \n\n";
