@@ -352,10 +352,12 @@ void credit(){
 	//clear the screen first
 	system("cls");
 	cout << "~~~~~~~~~Credit Page~~~~~~~~~~" << endl;
-	cout << "Leung Ho HIN  16187002A 103A" << endl;
-	cout << "Leung Ka MING 16091968A 103A" << endl;
-	cout << "MAK HOI KIT   16027276A 103C" << endl;
-	cout << "SARKI JOSHAN  1698910AA 103B" << endl;
+	cout << "Leung Ho HIN   16187002A 103A" << endl;
+	cout << "Leung Ka MING  16091968A 103A" << endl;
+	cout << "MAK HOI KIT    16027276A 103C" << endl;
+	cout << "SARKI JOSHAN   1698910AA 103B" << endl;
+	cout << "Wong Yuen Ting 16120342A 103A" << endl;
+	cout << "Lui Siu Man    16182713A 103A" << endl;
 	
 	cout << "  _______ _                 _           __                   _             _             " << endl;
 	cout << " |__   __| |               | |         / _|                 | |           (_)            " << endl;
@@ -552,8 +554,15 @@ int Changethetimer() {
 	}
 }
 //Gmae instruction
-void instruction(){
-	
+void Instruction() {
+	system("cls");
+	cout << "\n";
+	cout << "INSTRUCTIONS \n\n";
+	cout << "There are three ramdomly-generated block.(select index 0 to 2).You are about to choose to place.  Format should be:\n";
+	cout << "Forming with a row letter and a column number togther.\n";
+	cout << "Example: A0     It indicates where the "X" in the upper left corner of the block is placed. \n\n";
+	cout << " For the "reserved LShape "block, where the leftmost" X "of the input position indicator block is placed.\n\n";
+	cout << "Note that the block should be placed inside the board and should not overlap with other blocks and should not overlap with bombs under game mode (2).\n\n";
 }
 
 //Generate block for creating the list for user to choose
