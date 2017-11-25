@@ -127,7 +127,15 @@ class Board{
 
 public:
 	
-	
+	bool gameOver(Block x){
+		for (int i = 0; i < boardSize; i++){
+			for (int j = 0; j < boardSize; j++){
+				if (blockLocCheck(x, i, j) == 1){
+					return 0;
+				}
+			}
+		}
+	}
 	
 	//Function to put block on board (col in A-F row in 0-9)
 	void putBlock(Block x, int col,int row){
