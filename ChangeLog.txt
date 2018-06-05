@@ -28,3 +28,6 @@
      02:09  Added location validity check
      04:13  DEBUG: Can't place block, the board is not updating
      .....  Updated startGame, the game can play now, but very buggy, validity check still need to be improved
+     
+05/06/2018:
+	 17:27  Test     
